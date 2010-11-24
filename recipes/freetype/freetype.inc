@@ -12,7 +12,7 @@ SRC_URI = "\
 "
 S = "${WORKDIR}/freetype-${PV}"
 
-inherit autotools pkgconfig
+inherit autotools pkgconfig binconfig
 
 EXTRA_OEMAKE += "'LIBTOOL=${LIBTOOL}'"
 

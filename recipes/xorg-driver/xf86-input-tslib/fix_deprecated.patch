@@ -1,0 +1,28 @@
+--- xf86-input-tslib-0.0.6.old/src/tslib.c	2010-11-25 14:14:40.788858548 +0100
++++ xf86-input-tslib-0.0.6.new/src/tslib.c	2010-11-25 14:46:14.718858319 +0100
+@@ -103,6 +103,8 @@
+ static void
+ PointerControlProc(DeviceIntPtr dev, PtrCtrl * ctrl)
+ {
++	ErrorF("%s\n", __FUNCTION__);
++	return;
+ }
+ 
+ static Bool
+@@ -404,8 +406,6 @@
+ 		xf86MotionHistoryAllocate(pInfo);
+ #endif
+ 
+-		if (!InitPtrFeedbackClassDeviceStruct(device, PointerControlProc))
+-			return !Success;
+ 		break;
+ 
+ 	case DEVICE_ON:
+@@ -435,7 +435,6 @@
+ 	xf86TslibControlProc(pInfo->dev, DEVICE_OFF);
+ 	ts_close(priv->ts);
+ 	xfree(pInfo->private);
+-	pInfo->private = NULL;
+ 	xf86DeleteInput(pInfo, 0);
+ }
+ 

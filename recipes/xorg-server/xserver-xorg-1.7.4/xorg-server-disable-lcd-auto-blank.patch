@@ -1,0 +1,13 @@
+--- xorg-server-1.6.1/include/site.h	2009-04-15 01:14:57.000000000 +0800
++++ xorg-server-1.6.1.modified/include/site.h	2009-08-21 16:58:21.901775481 +0800
+@@ -112,8 +112,8 @@
+ #define DEFAULT_PTR_DENOMINATOR	1
+ #define DEFAULT_PTR_THRESHOLD	4
+ 
+-#define DEFAULT_SCREEN_SAVER_TIME (10 * (60 * 1000))
+-#define DEFAULT_SCREEN_SAVER_INTERVAL (10 * (60 * 1000))
++#define DEFAULT_SCREEN_SAVER_TIME 0
++#define DEFAULT_SCREEN_SAVER_INTERVAL 0
+ #define DEFAULT_SCREEN_SAVER_BLANKING PreferBlanking
+ #define DEFAULT_SCREEN_SAVER_EXPOSURES AllowExposures
+ #ifndef NOLOGOHACK

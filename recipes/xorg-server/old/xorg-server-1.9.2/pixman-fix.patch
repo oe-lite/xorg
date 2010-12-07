@@ -1,0 +1,11 @@
+--- xorg-server-1.9.2.org/dix/Makefile.in	2010-11-22 15:43:48.000000000 +0100
++++ xorg-server-1.9.2/dix/Makefile.in	2010-11-22 15:44:14.000000000 +0100
+@@ -447,7 +447,7 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ noinst_LTLIBRARIES = libdix.la libmain.la
+-AM_CFLAGS = $(DIX_CFLAGS)
++AM_CFLAGS = $(DIX_CFLAGS) $(PIXMAN_CFLAGS)
+ libmain_la_SOURCES = \
+ 	main.c
+ 

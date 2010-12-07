@@ -1,0 +1,71 @@
+diff -Naur imx-lib-10.07.11_orig/ipu/Makefile imx-lib-10.07.11/ipu/Makefile
+--- imx-lib-10.07.11_orig/ipu/Makefile	2010-07-15 09:52:36.000000000 +0200
++++ imx-lib-10.07.11/ipu/Makefile	2010-09-01 12:27:31.000000000 +0200
+@@ -1,6 +1,3 @@
+-CC=$(CROSS_COMPILE)gcc
+-AR=$(CROSS_COMPILE)ar
+-
+ OBJS = mxc_ipu_hl_lib.o mxc_ipu_lib.o
+ 
+ # list of platforms which want this test case
+diff -Naur imx-lib-10.07.11_orig/pxp/Makefile imx-lib-10.07.11/pxp/Makefile
+--- imx-lib-10.07.11_orig/pxp/Makefile	2010-07-15 09:52:36.000000000 +0200
++++ imx-lib-10.07.11/pxp/Makefile	2010-09-01 12:27:40.000000000 +0200
+@@ -1,6 +1,3 @@
+-CC=$(CROSS_COMPILE)gcc
+-AR=$(CROSS_COMPILE)ar
+-
+ # list of platforms which want this test case
+ INCLUDE_LIST:=IMX50 IMX51 IMX5
+ 
+diff -Naur imx-lib-10.07.11_orig/rng/Makefile imx-lib-10.07.11/rng/Makefile
+--- imx-lib-10.07.11_orig/rng/Makefile	2010-07-15 09:52:36.000000000 +0200
++++ imx-lib-10.07.11/rng/Makefile	2010-09-01 12:27:50.000000000 +0200
+@@ -1,7 +1,5 @@
+ AR = ar -crv
+ RM = rm -f
+-CC=$(CROSS_COMPILE)gcc
+-LD=$(CROSS_COMPILE)ld
+ 
+ INC := $(INCLUDE)
+ 
+diff -Naur imx-lib-10.07.11_orig/sahara2/Makefile imx-lib-10.07.11/sahara2/Makefile
+--- imx-lib-10.07.11_orig/sahara2/Makefile	2010-07-15 09:52:36.000000000 +0200
++++ imx-lib-10.07.11/sahara2/Makefile	2010-09-01 12:28:03.000000000 +0200
+@@ -1,7 +1,5 @@
+ AR = ar -crv
+ RM = rm -f
+-CC=$(CROSS_COMPILE)gcc
+-LD=$(CROSS_COMPILE)ld
+ 
+ INC := $(INCLUDE)
+ 
+diff -Naur imx-lib-10.07.11_orig/screenlayer/Makefile imx-lib-10.07.11/screenlayer/Makefile
+--- imx-lib-10.07.11_orig/screenlayer/Makefile	2010-07-15 09:52:36.000000000 +0200
++++ imx-lib-10.07.11/screenlayer/Makefile	2010-09-01 13:13:02.000000000 +0200
+@@ -1,5 +1,3 @@
+-CC=$(CROSS_COMPILE)gcc
+-AR=$(CROSS_COMPILE)ar
+ INC = $(INCLUDE) -I../ipu
+ 
+ OBJS = ScreenLayer.o
+diff -Naur imx-lib-10.07.11_orig/sim/Makefile imx-lib-10.07.11/sim/Makefile
+--- imx-lib-10.07.11_orig/sim/Makefile	2010-07-15 09:52:36.000000000 +0200
++++ imx-lib-10.07.11/sim/Makefile	2010-09-01 12:28:27.000000000 +0200
+@@ -1,6 +1,3 @@
+-CC=$(CROSS_COMPILE)gcc
+-AR=$(CROSS_COMPILE)ar
+-
+ OBJS = iso7816-3.o
+ 
+ CFLAGS += $(INCLUDE)
+diff -Naur imx-lib-10.07.11_orig/vpu/Makefile imx-lib-10.07.11/vpu/Makefile
+--- imx-lib-10.07.11_orig/vpu/Makefile	2010-07-15 09:52:36.000000000 +0200
++++ imx-lib-10.07.11/vpu/Makefile	2010-09-01 12:28:34.000000000 +0200
+@@ -1,6 +1,3 @@
+-CC=$(CROSS_COMPILE)gcc
+-AR=$(CROSS_COMPILE)ar
+-
+ # list of platforms which want this test case
+ INCLUDE_LIST:= IMX27ADS IMX31ADS IMX32ADS IMX37_3STACK IMX51 IMX53
+ 

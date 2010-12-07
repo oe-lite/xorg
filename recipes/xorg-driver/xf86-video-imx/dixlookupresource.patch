@@ -1,0 +1,12 @@
+diff -Naur xserver-xorg-video-imx-10.07.11-orig/src/imx_ext.c xserver-xorg-video-imx-10.07.11/src/imx_ext.c
+--- xserver-xorg-video-imx-10.07.11-orig/src/imx_ext.c	2010-10-05 16:10:43.000000000 +0200
++++ xserver-xorg-video-imx-10.07.11/src/imx_ext.c	2010-10-05 16:11:27.000000000 +0200
+@@ -46,7 +46,7 @@
+ 
+ 	/* Find the pixmap */
+ 	PixmapPtr pPixmap;
+-	int rc = dixLookupResource((pointer*)&pPixmap, stuff->pixmap, RT_PIXMAP, client,
++	int rc = dixLookupResourceByType((pointer*)&pPixmap, stuff->pixmap, RT_PIXMAP, client,
+ 					DixGetAttrAccess);
+ 	if (Success == rc)
+ 	{

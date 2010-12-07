@@ -3,7 +3,6 @@ LICENSE = "MIT"
 PR = "r2"
 
 SRC_URI = "file://X11"
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit native
 
@@ -13,4 +12,3 @@ do_install() {
 }
 
 NATIVE_INSTALL_WORKS = "1"
-PACKAGE_ARCH = "${NATIVE_ARCH}"

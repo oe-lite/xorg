@@ -13,12 +13,12 @@ INC_PR = "r0"
 SRC_URI = "http://xcb.freedesktop.org/dist/${BPN}-${PV}.tar.bz2 \
 "
 
-PACKAGES =+ "libxcb${RE}-composite libxcb${RE}-damage libxcb${RE}-dpms libxcb${RE}-glx \
-             libxcb${RE}-randr libxcb${RE}-record libxcb${RE}-render libxcb${RE}-res \
-             libxcb${RE}-screensaver libxcb${RE}-shape libxcb${RE}-shm libxcb${RE}-sync \
-             libxcb${RE}-xevie libxcb${RE}-dri2 libxcb${RE}-xf86dri libxcb${RE}-xfixes \
-             libxcb${RE}-xinerama libxcb${RE}-xlib libxcb${RE}-xprint libxcb${RE}-xtest \
-             libxcb${RE}-xv libxcb${RE}-xvmc"
+PACKAGES =+ "libxcb-composite libxcb-damage libxcb-dpms libxcb-glx \
+             libxcb-randr libxcb-record libxcb-render libxcb-res \
+             libxcb-screensaver libxcb-shape libxcb-shm libxcb-sync \
+             libxcb-xevie libxcb-dri2 libxcb-xf86dri libxcb-xfixes \
+             libxcb-xinerama libxcb-xlib libxcb-xprint libxcb-xtest \
+             libxcb-xv libxcb-xvmc"
 
 
 FILES_${PN} = "${libdir}/libxcb.so.*"

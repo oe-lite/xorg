@@ -4,6 +4,7 @@ LICENSE = "freetype GPLv2"
 PR = "r0"
 DEPENDS = "zlib"
 
+require conf/fetch/sourceforge.conf
 SRC_URI = "\
   ${SOURCEFORGE_MIRROR}/freetype/freetype-${PV}.tar.bz2 \
   file://no-hardcode.patch \

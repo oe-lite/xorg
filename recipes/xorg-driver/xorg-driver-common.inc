@@ -10,7 +10,7 @@ DEPENDS = "xorg-server${RE}-dev xproto${RE}-dev randrproto${RE}-dev \
 	util-macros${RE}-dev pixman${RE}-dev inputproto${RE}-dev \
 	libpciaccess${RE}-dev \
 	"
-
+require conf/mirror.conf
 SRC_URI = "${XORG_MIRROR}/individual/driver/${BPN}-${PV}.tar.bz2"
 
 FILES_${PN} += "${libdir}/xorg/modules/drivers/*.so"

@@ -14,7 +14,7 @@ EXTRA_OECONF += " \
 
 MACHINE_CPPFLAGS += "-I${MACHINE_SYSROOT}${includedir}/pixman-1"
  
-# TODO: Use XORG_MIRROR
+require conf/mirror.conf
 SRC_URI = "${XORG_MIRROR}/individual/xserver/${BPN}-${PV}.tar.bz2"
 #file://pixman-fix.patch;patch=1"
 

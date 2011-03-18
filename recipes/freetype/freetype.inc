@@ -4,13 +4,14 @@ LICENSE = "freetype GPLv2"
 PR = "r0"
 DEPENDS = "zlib"
 
+require conf/fetch/sourceforge.conf
 SRC_URI = "\
   ${SOURCEFORGE_MIRROR}/freetype/freetype-${PV}.tar.bz2 \
   file://no-hardcode.patch \
   file://fix-configure.patch \
   file://libtool-tag.patch \
 "
-S = "${WORKDIR}/freetype-${PV}"
+S = "${SRCDIR}/freetype-${PV}"
 
 inherit autotools pkgconfig binconfig
 

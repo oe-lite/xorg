@@ -11,7 +11,7 @@ SRC_URI = "\
   file://fix-configure.patch \
   file://libtool-tag.patch \
 "
-S = "${WORKDIR}/freetype-${PV}"
+S = "${SRCDIR}/freetype-${PV}"
 
 inherit autotools pkgconfig binconfig
 

@@ -6,6 +6,7 @@ DEPENDS = " encodings font-alias font-util-native mkfontdir-native mkfontscale-n
 RDEPENDS_${PN} = "encodings font-util font-alias"
 
 INC_PR = "r0"
+
 require conf/mirror.conf
 SRC_URI = "${XORG_MIRROR}/individual/font/${BPN}-${PV}.tar.bz2;name=archive"
 

@@ -1,18 +1,18 @@
 DESCRIPTION = "GNOME XSLT library"
-SECTION = "libs"
 PRIORITY = "optional"
 LICENSE = "MIT"
-INC_PR = "r0"
 
-SRC_URI = "ftp://xmlsoft.org/libxml2/${BPN}-${PV}.tar.gz"
+SRC_URI = "ftp://xmlsoft.org/libxml2/libxslt-${PV}.tar.gz"
 
-DEPENDS = "libxml2${RE}-dev \
-${HOST_ARCH}/sysroot-libm ${HOST_ARCH}/sysroot-libdl \
-"
+DEPENDS = "libxml2-dev \
+		   ${TARGET_ARCH}/sysroot-libm \
+		   ${TARGET_ARCH}/sysroot-libpthread \
+           ${TARGET_ARCH}/sysroot-libdl"
+DEPENDS_recipe-native = "libxml2-native-dev"
 
 BBCLASSEXTEND = "native"
 
-inherit autotools pkgconfig binconfig
+inherit autotools
 
 EXTRA_OECONF = "--without-python --without-debug --without-mem-debug --without-crypto"
 

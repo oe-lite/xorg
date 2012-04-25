@@ -18,7 +18,7 @@ do_configure_create() {
 }
 
 do_install() {
-	install -d ${D}/${bindir}/glsl
-	install -m 755 ${S}/builtin_compiler ${D}/${bindir}/glsl/builtin_compiler
-	install -m 755 ${S}/glsl_compiler ${D}/${bindir}/glsl/glsl_compiler
+	install -d ${D}/${bindir}
+	install -m 755 ${S}/builtin_compiler ${D}/${bindir}/builtin_compiler
+	install -m 755 ${S}/glsl_compiler ${D}/${bindir}/glsl_compiler
 }

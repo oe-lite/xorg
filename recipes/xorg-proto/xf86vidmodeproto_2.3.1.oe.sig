@@ -1,0 +1,1 @@
+11d54c3210887631ea71e8f8030a77692e964fc4  xf86vidmodeproto-2.3.1.tar.bz2

@@ -61,3 +61,10 @@ SRC_URI += "file://206_CVE-2011-4029.patch"
 SRC_URI += "file://207_CVE-2010-4818.patch"
 SRC_URI += "file://208_CVE-2010-4819.patch"
 SRC_URI += "file://209_fixes-crash-XIQueryDevice.patch"
+
+
+do_install[postfuncs] += "do_install_fix"
+do_install_fix () {
+        cp -vr ${D}${libdir}/xorg/modules/linux/. ${D}${libdir}/xorg/modules/ || :
+        rm -rf ${D}${libdir}/xorg/modules/linux
+}

@@ -1,0 +1,12 @@
+require conf/fonts.conf
+
+CLASS_DEPENDS += "native:mkfontdir native:mkfontscale"
+CLASS_RDEPENDS += "fc-cacheinit"
+IMAGE_PREPROCESS_FUNCS = "image_preprocess_imagefont"
+
+image_preprocess_imagefont () {
+    for dir in `find ./${fontdir} -type d`; do
+        mkfontdir $dir
+        mkfontscale $dir
+    done
+}

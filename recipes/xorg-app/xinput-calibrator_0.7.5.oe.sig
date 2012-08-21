@@ -1,0 +1,1 @@
+1c2803364585f94c2a98391f23542c4f268be076  xinput_calibrator-0.7.5.tar.gz

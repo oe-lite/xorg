@@ -1,0 +1,13 @@
+require xorg-app-common.inc
+
+SUMMARY = "XRandR: X Resize, Rotate and Reflect extension command"
+
+DESCRIPTION = "Xrandr is used to set the size, orientation and/or \
+reflection of the outputs for a screen. It can also set the screen \
+size."
+
+LICENSE= "MIT"
+DEPENDS += "libxrandr"
+
+#CFLAGS += "-Wl,-lXrandr"
+LDFLAGS += "-lXrandr -lX11 -lxcb -lXext -ldl -lXrender -lm"

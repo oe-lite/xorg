@@ -1,0 +1,17 @@
+require xorg-app-common.inc
+
+SUMMARY = "A program to create an index of X font files in a directory"
+
+DESCRIPTION = "For each directory argument, mkfontdir reads all of the \
+font files in the directory. The font names and related data are written \
+out to the files \"fonts.dir\", \"fonts.scale\", and \"fonts.alias\".  \
+The X server and font server use these files to find the available font \
+files."
+
+
+RDEPENDS_${PN} += "mkfontscale"
+
+RDEPENDS_${PN}:native = " native:mkfontscale"
+
+RECIPE_TYPES = "native"
+

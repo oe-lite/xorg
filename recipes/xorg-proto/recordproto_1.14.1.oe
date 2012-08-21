@@ -1,0 +1,11 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XRecord: X Record extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the X Record \
+extension.  This extension is used to record and play back event \
+sequences."
+
+LICENSE = "MIT-style"
+
+#CONFLICTS = "recordext"

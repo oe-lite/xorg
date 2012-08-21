@@ -1,0 +1,12 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XFree86-BIGFONT: XFree86 Big Font extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the XFree86 \
+Big Font extension.  This extension makes larger font requests \
+possible."
+
+LICENSE = "MIT"
+
+RECIPE_TYPES = "native sdk machine"
+

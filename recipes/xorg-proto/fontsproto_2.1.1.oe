@@ -1,0 +1,12 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XFont: X Font rasterisation headers"
+
+DESCRIPTION = "This package provides the wire protocol for the X Font \
+rasterisation extensions.  These extensions are used to control \
+server-side font configurations."
+
+LICENSE = "MIT-style"
+
+RECIPE_TYPES = "native machine"
+

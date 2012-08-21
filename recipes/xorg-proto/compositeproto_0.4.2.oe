@@ -1,0 +1,12 @@
+require xorg-proto-common.inc
+
+SUMMARY = "Xcomposite: X composite extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the X \
+composite extension.  The X composite extension provides three related \
+mechanisms for compositing and off-screen storage."
+
+LICENSE = "MIT & MIT-style"
+
+#CONFLICTS = "compositeext"
+

@@ -1,0 +1,26 @@
+DESCRIPTION = "X.Org font package creation/installation utilities"
+
+require xorg-font-common.inc
+
+inherit pkgconfig
+#Unicode is MIT
+LICENSE = "BSD & MIT"
+
+RECIPE_TYPES = "native machine"
+
+DEPENDS = "encodings util-macros"
+DEPENDS:native = " native:util-macros"
+DEPENDS_${PN} += "font-util-dev"
+DEPENDS_${PN}-dev = ""
+RDEPENDS_${PN} = "mkfontdir mkfontscale encodings"
+RDEPENDS_${PN}:native = " native:mkfontdir  native:mkfontscale"
+
+
+
+#do_configure[prefuncs] += "do_configure_font_utils"
+
+#do_configure_font_utils() {
+#        sed -i "s#MAPFILES_PATH=\`pkg-config#MAPFILES_PATH=\`PKG_CONFIG_PATH=\"${BUILD_SYSROOT}/pkg-config\" pkg-config#g" fontutil.m4.in
+#}
+
+

@@ -1,0 +1,20 @@
+SUMMARY = "The Xorg font encoding files"
+
+DESCRIPTION = "The encodings that map to specific characters for a \
+number of Xorg and common fonts."
+
+
+require xorg-font-common.inc
+
+RECIPE_TYPES = "native machine"
+
+LICENSE = "PD"
+
+DEPENDS = "native:mkfontscale native:font-util"
+
+SRC_URI += "file://nocompiler.patch"
+
+
+
+EXTRA_OECONF += "--with-encodingsdir=${datadir}/fonts/X11/encodings"
+

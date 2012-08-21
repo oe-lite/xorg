@@ -1,34 +1,36 @@
 HOMEPAGE = "http://www.x.org"
-SECTION = "x11/fonts"
+BUGTRACKER = "https://bugs.freedesktop.org/enter_bug.cgi?product=xorg"
+
 LICENSE = "MIT-X"
 
-DEPENDS = " encodings font-alias font-util-native mkfontdir-native mkfontscale-native"
+require conf/fetch/xorg.conf
+
+DEPENDS = " encodings font-alias native:font-util native:mkfontdir native:mkfontscale"
 RDEPENDS_${PN} = "encodings font-util font-alias"
 
-INC_PR = "r0"
+XORG_PN = "${PN}"
 
-require conf/mirror.conf
-SRC_URI = "${XORG_MIRROR}/individual/font/${BPN}-${PV}.tar.bz2;name=archive"
+SRC_URI = "${XORG_MIRROR}/individual/font/${XORG_PN}-${PV}.tar.bz2"
+S = "${SRCDIR}/${XORG_PN}-${PV}"
 
 inherit autotools pkgconfig
 
 EXTRA_OEMAKE += "FCCACHE=/bin/true"
 
-# oe-lite
-#do_configure_prepend() {
-#       if [ -f "${S}"/configure.ac ] ; then
-#                sed -i "s#^MAPFILES_PATH=.*#MAPFILES_PATH=\"${STAGING_DIR_TARGET}/\$(pkg-config --variable=mapdir fontutil)\"#g" "${S}"/configure.ac
-#        fi
-#}
+do_configure[prefuncs] += "do_configure_xorg_fonts"
+do_configure_xorg_fonts() {
+        if [ -f "${S}"/configure.ac ] ; then
+                sed -i "s#^MAPFILES_PATH=.*#MAPFILES_PATH=\"${STAGE_DIR}/\$(pkg-config --variable=mapdir fontutil)\"#g" "${S}"/configure.ac
+        fi
+}
 
-do_install_append() {
+do_install[postfuncs] += "do_install_xorg_fonts"
+do_install_xorg_fonts() {
 	find ${D}${libdir}/X11/fonts -type f -name fonts.dir | xargs rm -f
 	find ${D}${libdir}/X11/fonts -type f -name fonts.scale | xargs rm -f
 	find ${D}${datadir}/fonts/X11 -type f -name fonts.dir | xargs rm -f
 	find ${D}${datadir}/fonts/X11 -type f -name fonts.scale | xargs rm -f	
 }
-
-PACKAGE_ARCH = "all"
 
 FILES_${PN} += " ${libdir}/X11/fonts ${datadir}"
 

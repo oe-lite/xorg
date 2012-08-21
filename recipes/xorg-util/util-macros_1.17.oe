@@ -1,0 +1,17 @@
+SUMMARY = "X autotools macros"
+
+DESCRIPTION = "M4 autotools macros used by various X.org programs."
+
+require xorg-util-common.inc
+
+LICENSE = "MIT & MIT-style"
+
+# ${PN} is empty so we need to tweak -dev and -dbg package dependencies
+
+DEPENDS_${PN}           = "${PN}-dev_${PV}"
+DEPENDS_${PN}-dev       = ""
+
+RDEPENDS_${PN}-dev = ""
+
+RECIPE_TYPES = "machine native sdk cross"
+

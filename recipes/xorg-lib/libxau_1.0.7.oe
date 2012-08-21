@@ -1,0 +1,21 @@
+SUMMARY = "Xau: X Authority Database library"
+
+DESCRIPTION = "libxau provides the main interfaces to the X11 \
+authorisation handling, which controls authorisation for X connections, \
+both client-side and server-side."
+
+RECIPE_TYPES = "native sdk machine"
+
+require xorg-lib-common.inc
+
+inherit gettext library
+
+LICENSE = "MIT-style"
+
+DEPENDS += " xproto"
+#PROVIDES_${PN} =  "${PN}"
+
+
+XORG_PN = "libXau"
+
+

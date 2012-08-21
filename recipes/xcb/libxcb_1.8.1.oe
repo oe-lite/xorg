@@ -1,0 +1,10 @@
+include libxcb.inc
+
+LICENSE = "MIT"
+
+RECIPE_TYPES = "machine native"
+
+DEPENDS += "libpthread-stubs native:xcb-proto libxdmcp"
+
+PARALLEL_MAKE = ""
+

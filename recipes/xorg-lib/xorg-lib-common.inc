@@ -1,12 +1,17 @@
-HOMEPAGE = "http://www.x.org"
-SECTION = "x11/libs"
 LICENSE = "MIT-X"
-DEPENDS = "util-macros${RE}-dev xorg-headers-native${RE}-dev xproto${RE}-dev"
+DEPENDS = "util-macros"
 
-INC_PR = "r0"
-require conf/mirror.conf
-SRC_URI = "${XORG_MIRROR}/individual/lib/${BPN}-${PV}.tar.bz2"
+require conf/fetch/xorg.conf
+
+XORG_PN ?= "${PN}"
+SRC_URI = "${XORG_MIRROR}/individual/lib/${XORG_PN}-${PV}.tar.bz2"
+
+DEPENDS_${PN}           = "${PN}-dev_${PV}"
+DEPENDS_${PN}-dev       = ""
+
+S = "${SRCDIR}/${XORG_PN}-${PV}"
 
 inherit autotools pkgconfig
 
-EXTRA_OECONF = "--enable-malloc0returnsnull"
+EXTRA_OECONF = "--enable-malloc0returnsnull --with-fop=no --without-xmlto"
+

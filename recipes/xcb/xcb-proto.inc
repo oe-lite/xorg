@@ -1,17 +1,31 @@
-DESCRIPTION = "XCB: an X protocol C binding"
-SECTION = "x11/libs"
-LICENSE = "MIT-X"
+SUMMARY = "XCB: The X protocol C binding headers"
+DESCRIPTION = "Function prototypes for the X protocol C-language Binding \
+(XCB).  XCB is a replacement for Xlib featuring a small footprint, \
+latency hiding, direct access to the protocol, improved threading \
+support, and extensibility."
 HOMEPAGE = "http://xcb.freedesktop.org"
+BUGTRACKER = "https://bugs.freedesktop.org/enter_bug.cgi?product=XCB"
 
-SRC_URI = "http://xcb.freedesktop.org/dist/${BPN}-${PV}.tar.bz2"
+LICENSE = "MIT-X"
 
-BBCLASSEXTEND = "native sdk"
+RECIPE_TYPES = "native sdk machine"
+SRC_URI = "http://xcb.freedesktop.org/dist/xcb-proto-${PV}.tar.bz2"
 
-inherit autotools pkgconfig binconfig
+DEPENDS_${PN}           = "${PN}-dev_${PV}"
+DEPENDS_${PN}-dev       = ""
 
-INC_PR = "r0"
+inherit autotools pkgconfig
 
-BINCONFIG_GLOB += "${libdir}/pkgconfig/*.pc"
+FILES_${PN}-dev += "${datadir}/xcb/*.xml ${datadir}/xcb/*.xsd"
 
-FILES_${PN}-dev += "${datadir}/xcb/*.xml ${datadir}/xcb/*.xsd ${libdir}/python*/dist-packages/"
-ALLOW_EMPTY_${PN} = "1"
+RDEPENDS_${PN}-dev = ""
+
+PACKAGES += "python-xcbgen"
+FILES_python-xcbgen = "${libdir}/python*"
+
+#RRECOMMENDS_${PN}-dbg = "${PN}-dev (= ${EXTENDPKGV})"
+
+#DEPENDS:native += " python-native"
+
+EXTRA_OECONF += "--prefix=${prefix}/"
+

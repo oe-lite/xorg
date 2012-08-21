@@ -1,0 +1,37 @@
+DESCRIPTION = "X.Org X server -- meego event devices (mtev) input driver"
+LICENSE = "GPL-2.0+"
+
+inherit make c
+SRC_URI = "file://xorg-x11-drv-mtev-0.1.13.tar.gz \
+           file://xorg-x11-drv-mtev-0.1.13-update-code-for-xserver-1.11.patch \
+           file://xorg-x11-drv-mtev-0.1.13-add-right-mouse-button-emulation.patch \
+           file://Makefile \
+	   "
+#SRC_URI += "file://ABI_12.patch"
+
+DEPENDS += "inputproto kbproto pixman xextproto libpciaccess xserver-xorg-dev xproto randrproto util-macros mtdev-dev libm mtdev"
+
+RDEPENDS_${PN} = "mtdev"
+
+FILES_${PN} += " ${libdir}/xorg/modules/input/*.so"
+FILES_${PN}-dbg += " ${libdir}/xorg/modules/input/.debug"
+
+#source filename from file src uri
+S = "${SRCDIR}/xorg-x11-drv-mtev-0.1.13"
+
+#hack for includes
+CFLAGS += " -I${HOST_SYSROOT}${includedir}/xorg \
+            -I${HOST_SYSROOT}${includedir}/pixman-1 \
+            -I${HOST_SYSROOT}${includedir} -fPIC -Wl,/${HOST_SYSROOT}/usr/lib/libmtdev.so.1" 
+
+do_configure() {
+	cp ${S}/../Makefile ${S}/.
+}
+
+
+# FIXME: We don't want to include the libtool archives (*.la) from modules
+# directory, as they serve no useful purpose. Upstream should fix Makefile.am
+do_install[postfuncs] += "do_install_input"
+do_install_input() {
+        find ${D}${libdir}/xorg/modules -regex ".*\.la$" | xargs rm -f --
+}

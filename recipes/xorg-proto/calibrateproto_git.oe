@@ -1,0 +1,20 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XCalibrate: Touchscreen calibration headers"
+
+DESCRIPTION = "This package provides the wire protocol for the \
+Touchscreen calibration extension."
+
+LICENSE = "MIT-style"
+
+inherit autotools-autoreconf
+
+SRC_REV = "commit=1da6fd1e2c7a49648245c98481fabea8b9690a8c"
+SRC_URI = "git://anongit.freedesktop.org/git/xorg/proto/calibrateproto;protocol=git;${SRC_REV}"
+
+FILES = "file://fix.patch;apply=yes"
+S = "${SRCDIR}/${PN}"
+
+do_autoreconf () {
+	${S}/autogen.sh
+}

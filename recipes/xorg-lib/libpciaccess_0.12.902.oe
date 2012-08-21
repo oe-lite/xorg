@@ -1,0 +1,13 @@
+SUMMARY = "Generic PCI access library for X"
+
+DESCRIPTION = "libpciaccess provides functionality for X to access the \
+PCI bus and devices in a platform-independent way."
+
+require xorg-lib-common.inc
+
+SRC_URI += "file://fix_deletion_of_last_handle.patch"
+
+LICENSE = "MIT & MIT-style"
+
+DEPENDS += "xproto libx11"
+

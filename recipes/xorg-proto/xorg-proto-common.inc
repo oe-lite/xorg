@@ -1,13 +1,21 @@
-DESCRIPTION = "X protocol headers: ${BPN}"
-HOMEPAGE = "http://www.x.org"
-SECTION = "x11/libs"
+DESCRIPTION = "X protocol headers: ${XORG_PN}"
+
+require conf/fetch/xorg.conf
+
 LICENSE = "MIT-X"
 
-DEPENDS = "util-macros-dev"
-BBCLASSEXTEND = "native cross"
-INC_PR = "r0"
+XORG_PN = "${PN}"
 
-require conf/mirror.conf
-SRC_URI = "${XORG_MIRROR}/individual/proto/${BPN}-${PV}.tar.bz2"
+SRC_URI = "${XORG_MIRROR}/individual/proto/${XORG_PN}-${PV}.tar.bz2"
+
+S = "${SRCDIR}/${XORG_PN}-${PV}"
+
+DEPENDS = "util-macros"
+DEPENDS_${PN}           = "${PN}-dev_${PV}"
+DEPENDS_${PN}-dev       = ""
 
 inherit autotools pkgconfig
+EXTRA_OECONF = "--with-fop=no --without-xmlto"
+
+# ${PN} is empty so we need to tweak -dev and -dbg package dependencies
+RDEPENDS_${PN}-dev = ""

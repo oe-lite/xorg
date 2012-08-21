@@ -1,48 +1,74 @@
-DESCRIPTION = "XCB: an X protocol C binding"
-SECTION = "x11/libs"
-LICENSE = "MIT-X"
+SUMMARY = "XCB: The X protocol C binding library"
+DESCRIPTION = "The X protocol C-language Binding (XCB) is a replacement \
+for Xlib featuring a small footprint, latency hiding, direct access to \
+the protocol, improved threading support, and extensibility."
 HOMEPAGE = "http://xcb.freedesktop.org"
+BUGTRACKER = "https://bugs.freedesktop.org/enter_bug.cgi?product=XCB"
+
+RECIPE_TYPES = "native sdk machine"
+
+# Avoid random rare Doxygen segfaults
+EXTRA_OECONF += "--disable-build-docs"
+
+inherit autotools-autoreconf pkgconfig library
+LICENSE = "MIT-X"
 
 PARALLEL_MAKE = ""
-BBCLASSEXTEND = "native sdk"
-DEPENDS = "xcb-proto${RE}-dev xproto${RE}-dev libXau${RE}-dev \
-libxslt-native-dev libxml2-native-dev libpthread-stubs${RE}-dev \
-"
-INC_PR = "r0"
+DEPENDS = "xproto libxau xcb-proto python-xcbgen"
 
-SRC_URI = "http://xcb.freedesktop.org/dist/${BPN}-${PV}.tar.bz2 \
-"
+#removed native:libxslt (no need for GNOME)
+# DEPENDS += "native:xsltprop native:gperf"
+
+SRC_URI = "http://xcb.freedesktop.org/dist/libxcb-${PV}.tar.bz2"
+#           file://xcbincludedir.patch"
 
 PACKAGES =+ "libxcb-composite libxcb-damage libxcb-dpms libxcb-glx \
              libxcb-randr libxcb-record libxcb-render libxcb-res \
              libxcb-screensaver libxcb-shape libxcb-shm libxcb-sync \
-             libxcb-xevie libxcb-dri2 libxcb-xf86dri libxcb-xfixes \
-             libxcb-xinerama libxcb-xlib libxcb-xprint libxcb-xtest \
-             libxcb-xv libxcb-xvmc"
-
+             libxcb-xevie libxcb-xf86dri libxcb-xfixes libxcb-xlib \
+             libxcb-xprint libxcb-xtest libxcb-xv libxcb-xvmc \
+             libxcb-dri2 libxcb-xinerama"
 
 FILES_${PN} = "${libdir}/libxcb.so.*"
-FILES_${PN}-composite = "${libdir}/libxcb-composite.so.*"
-FILES_${PN}-damage = "${libdir}/libxcb-damage.so.*"
-FILES_${PN}-dpms = "${libdir}/libxcb-dpms.so.*"
-FILES_${PN}-glx = "${libdir}/libxcb-glx.so.*"
-FILES_${PN}-randr = "${libdir}/libxcb-randr.so.*"
-FILES_${PN}-record = "${libdir}/libxcb-record.so.*"
-FILES_${PN}-render = "${libdir}/libxcb-render.so.*"
-FILES_${PN}-res = "${libdir}/libxcb-res.so.*"
-FILES_${PN}-screensaver = "${libdir}/libxcb-screensaver.so.*"
-FILES_${PN}-shape = "${libdir}/libxcb-shape.so.*"
-FILES_${PN}-shm = "${libdir}/libxcb-shm.so.*"
-FILES_${PN}-sync = "${libdir}/libxcb-sync.so.*"
-FILES_${PN}-xevie = "${libdir}/libxcb-xevie.so.*"
-FILES_${PN}-xf86dri = "${libdir}/libxcb-xf86dri.so.*"
-FILES_${PN}-dri2 = "${libdir}/libxcb-dri2.so.*"
-FILES_${PN}-xfixes = "${libdir}/libxcb-xfixes.so.*"
-FILES_${PN}-xinerama = "${libdir}/libxcb-xinerama.so.*"
-FILES_${PN}-xlib = "${libdir}/libxcb-xlib.so.*"
-FILES_${PN}-xprint = "${libdir}/libxcb-xprint.so.*"
-FILES_${PN}-xtest = "${libdir}/libxcb-xtest.so.*"
-FILES_${PN}-xv = "${libdir}/libxcb-xv.so.*"
-FILES_${PN}-xvmc = "${libdir}/libxcb-xvmc.so.*"
+#FILES_${PN}-dev = "${libdir}/libxcb.* ${libdir}/pkgconfig/*.pc ${includedir}/xcb/*.h"
+FILES_libxcb-dri2 = "${libdir}/libxcb-dri2.so.*"
+FILES_libxcb-composite = "${libdir}/libxcb-composite.so.*"
+FILES_libxcb-damage = "${libdir}/libxcb-damage.so.*"
+FILES_libxcb-dpms = "${libdir}/libxcb-dpms.so.*"
+FILES_libxcb-glx = "${libdir}/libxcb-glx.so.*"
+FILES_libxcb-randr = "${libdir}/libxcb-randr.so.*"
+FILES_libxcb-record = "${libdir}/libxcb-record.so.*"
+FILES_libxcb-render = "${libdir}/libxcb-render.so.*"
+FILES_libxcb-res = "${libdir}/libxcb-res.so.*"
+FILES_libxcb-screensaver = "${libdir}/libxcb-screensaver.so.*"
+FILES_libxcb-shape = "${libdir}/libxcb-shape.so.*"
+FILES_libxcb-shm = "${libdir}/libxcb-shm.so.*"
+FILES_libxcb-sync = "${libdir}/libxcb-sync.so.*"
+FILES_libxcb-xevie = "${libdir}/libxcb-xevie.so.*"
+FILES_libxcb-xf86dri = "${libdir}/libxcb-xf86dri.so.*"
+FILES_libxcb-xfixes = "${libdir}/libxcb-xfixes.so.*"
+FILES_libxcb-xinerama = "${libdir}/libxcb-xinerama.so.*"
+FILES_libxcb-xlib = "${libdir}/libxcb-xlib.so.*"
+FILES_libxcb-xprint = "${libdir}/libxcb-xprint.so.*"
+FILES_libxcb-xtest = "${libdir}/libxcb-xtest.so.*"
+FILES_libxcb-xv = "${libdir}/libxcb-xv.so.*"
+FILES_libxcb-xvmc = "${libdir}/libxcb-xvmc.so.*"
 
-inherit autotools pkgconfig
+
+# XCBPROTO_XCBINCLUDEDIR is setup based on `pkg-config --variable=xcbincludedir xcb-proto`
+# but the xcbincludedir variable doesn't point into the staging area, so it needs some
+# tweeking here:
+
+
+do_patch[postfuncs] += "do_patch_configure"
+
+do_patch_configure () {
+    sed -i "s|XCBPROTO_XCBINCLUDEDIR=\`|XCBPROTO_XCBINCLUDEDIR=${HOST_SYSROOT}/\`|" \
+        ${S}/configure.ac
+    sed -i "s|XCBPROTO_XCBPYTHONDIR=\`|XCBPROTO_XCBPYTHONDIR=${HOST_SYSROOT}/\`|" \
+        ${S}/configure.ac
+}
+
+PKG_CONFIG_LIBDIR        =. "${HOST_SYSROOT}${base_libdir}/pkgconfig:"
+#export PKG_CONFIG_PATH          = "${BUILD_SYSROOT}${datadir}/pkgconfig"
+#export PKG_CONFIG_SYSROOT_DIR   = "${BUILD_SYSROOT}"

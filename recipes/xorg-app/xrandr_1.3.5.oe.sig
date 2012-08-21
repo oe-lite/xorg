@@ -1,0 +1,1 @@
+ef45925d5b0e72c73d21798d65a41d476fdb0d3f  xrandr-1.3.5.tar.bz2

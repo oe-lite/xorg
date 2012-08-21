@@ -1,0 +1,14 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XRandR: X Resize, Rotate and Reflect extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the X Resize, \
+Rotate and Reflect extension.  This extension provides the ability to \
+resize, rotate and reflect the root window of a screen."
+
+LICENSE = "MIT-style"
+
+#CONFLICTS = "randrext"
+
+RECIPE_TYPES = "sdk machine"
+

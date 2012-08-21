@@ -1,0 +1,14 @@
+require xorg-lib-common.inc
+
+SUMMARY = "Xinerama: Xinerama extension library"
+
+DESCRIPTION = "Xinerama is a simple library designed to interface the \
+Xinerama Extension for retrieving information about physical output \
+devices which may be combined into a single logical X screen."
+
+LICENSE = "MIT"
+
+DEPENDS += "libxext xineramaproto"
+
+XORG_PN = "libXinerama"
+

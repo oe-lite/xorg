@@ -1,0 +1,10 @@
+inherit sysvinit
+RECIPE_FLAGS = "fc_cacheinit_sysvinit_start"
+PACKAGES = "${PN}"
+RDEPENDS_${PN} += "fontconfig-utils"
+
+DEFAULT_USE_fc_cacheinit_sysvinit_start = "99"
+do_install() {
+    echo 'nice -n19 fc-cache&' > fc-cacheinit
+    sysvinit_install_script fc-cacheinit
+}

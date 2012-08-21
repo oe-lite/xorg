@@ -1,0 +1,1 @@
+9ff9bb9243b0474330959dc3853973523c9dd9ce  resourceproto-1.2.0.tar.bz2

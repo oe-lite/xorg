@@ -1,10 +1,13 @@
 HOMEPAGE = "http://www.x.org"
-SECTION = "x11/utils"
+BUGTRACKER = "https://bugs.freedesktop.org/enter_bug.cgi?product=xorg"
+
 LICENSE = "MIT-X"
 
-require conf/mirror.conf
-SRC_URI = "${XORG_MIRROR}/individual/util/${BPN}-${PV}.tar.bz2"
+require conf/fetch/xorg.conf
 
-BBCLASSEXTEND = "native"
+XORG_PN = "${PN}"
+SRC_URI = "${XORG_MIRROR}/individual/util/${XORG_PN}-${PV}.tar.gz"
 
-inherit autotools pkgconfig
+S = "${SRCDIR}/${XORG_PN}-${PV}"
+
+inherit autotools-autoreconf pkgconfig

@@ -1,0 +1,10 @@
+require xorg-proto-common.inc
+
+SUMMARY = "Xinerama: Xinerama extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the Xinerama \
+extension.  This extension is used for retrieving information about \
+physical output devices which may be combined into a single logical X \
+screen."
+
+LICENSE = "MIT & MIT-style"

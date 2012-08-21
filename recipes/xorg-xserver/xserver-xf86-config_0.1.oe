@@ -1,0 +1,12 @@
+# Append path for freescale layer to include bsp xorg.conf 
+LICENSE = "MIT-X"
+SRC_URI = "file://imx53qsb/xorg.conf"
+
+COMPATIBLE_MACHINES = "imx53qsb b740"
+
+do_install() {
+	mkdir -p ${D}${sysconfdir}/X11
+	/usr/bin/install -c -m 644 ${SRCDIR}/xorg.conf ${D}${sysconfdir}/X11/xorg.conf
+}
+
+

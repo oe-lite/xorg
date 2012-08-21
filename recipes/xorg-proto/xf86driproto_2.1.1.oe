@@ -1,0 +1,10 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XFree86-DRI: XFree86 Direct Rendering Infrastructure extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the XFree86 \
+Direct Rendering Infrastructure extension.  The XFree86-DRI extension is \
+used to organize direct rendering support or 3D clients and help \
+arbitrate requests."
+
+LICENSE = "MIT"

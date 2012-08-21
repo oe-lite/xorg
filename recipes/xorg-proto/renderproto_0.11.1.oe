@@ -1,0 +1,15 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XRender: X rendering Extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the X \
+Rendering extension.  This is the basis the image composition within the \
+X window system."
+
+LICENSE = "MIT-style"
+
+#CONFLICTS = "renderext"
+
+RECIPE_TYPES = "native sdk machine"
+
+

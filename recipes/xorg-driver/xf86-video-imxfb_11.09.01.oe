@@ -1,0 +1,46 @@
+# Copyright (C) 2011 Freescale
+# Released under the MIT license (see COPYING.MIT for the terms)
+
+DESCRIPTION = "X.Org X server -- Freescale iMx framebuffer driver"
+LICENSE = "MIT-X"
+RDEPENDS_${PN} = "amd-gpu-x11-bin-mx51"
+DEPENDS = "xserver-xorg libx11 xproto renderproto videoproto randrproto util-macros amd-gpu-x11-bin-mx51 fontsproto pixman xextproto inputproto libpciaccess libz160"
+
+inherit autotools-autoreconf pkgconfig
+
+SRC_URI = "file://xserver-xorg-video-imx-${PV}.tar.gz \
+           file://xf86-video-imxfb-fix-m4-hardcodded-paths.patch \
+	   "
+#SRC_URI += "file://xorg-1.12.patch"
+
+RECIPE_FLAGS = "xorg_video_imx_xvideo_enable"
+DEFAULT_USE_xorg_video_imx_xvideo_enable = "0"
+DEPENDS:>USE_xorg_video_imx_xvideo_enable += " imx-lib-dev"
+RDEPENDS_${PN}:>USE_xorg_video_imx_xvideo_enable += " imx-lib-dev"
+SRC_URI:>USE_xorg_video_imx_xvideo_enable += "file://enable_xvideo.patch"
+
+FILES_${PN} += " ${libdir}/xorg/modules/drivers/*.so"
+FILES_${PN}-dbg += " ${libdir}/xorg/modules/drivers/.debug"
+EXTRA_OECONF_armv7a = " --enable-neon "
+CFLAGS += " -I${HOST_SYSROOT}${includedir}/xorg -I${HOST_SYSROOT}${includedir}/pixman-1 "
+
+S = "${SRCDIR}/xserver-xorg-video-imx-${PV}"
+
+do_compile[prefuncs] += "do_compile_fix_includes"
+
+do_compile_fix_includes2 () {
+	for f in `find ${BUILD_SYSROOT}/usr/include/xorg/ -name '*.h' `; do b=`basename $f .h`; ln -sf $f ${BUILD_SYSROOT}/usr/include/$b; done
+}
+
+do_compile_fix_includes () {
+	find ${S} -name '*.c' |xargs sed 's|#include \"\(.*\)\"|#include \<\1\>|' -i
+	find ${S} -name 'config.h'| xargs sed 's|#include \"\(.*\)\"|#include \<\1\>|' -i
+}
+
+#make diff for files with "" in includes"
+
+do_install[postfuncs] += "do_install_imxfb"
+do_install_imxfb () {
+    # driver's la files are not packaged
+    rm -f ${D}${libdir}/xorg/modules/drivers/*.la
+}

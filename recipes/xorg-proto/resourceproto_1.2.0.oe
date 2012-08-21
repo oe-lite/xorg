@@ -1,0 +1,10 @@
+require xorg-proto-common.inc
+
+
+DESCRIPTION = "This package provides the wire protocol for the X \
+Resource extension.  XRes provides an interface that allows X clients to \
+see and monitor X resource usage of various clients."
+
+LICENSE = "MIT"
+
+

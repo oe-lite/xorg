@@ -1,0 +1,21 @@
+SUMMARY = "Library that provides weak aliases for pthread functions"
+DESCRIPTION = "This library provides weak aliases for pthread functions \
+not provided in libc or otherwise available by default."
+HOMEPAGE = "http://xcb.freedesktop.org"
+BUGTRACKER = "http://bugs.freedesktop.org/buglist.cgi?product=XCB"
+LICENSE = "MIT"
+
+PARALLEL_MAKE = ""
+#DEPENDS = "xcb-proto xproto libxau  native:libxslt"
+# DEPENDS += " native:xsltproc  native:gperf"
+
+DEPENDS_${PN}           = "${PN}-dev_${PV}"
+DEPENDS_${PN}-dev       = ""
+
+SRC_URI = "http://xcb.freedesktop.org/dist/libpthread-stubs-${PV}.tar.bz2"
+
+inherit autotools 
+
+RDEPENDS_${PN}-dev = ""
+
+RECIPE_TYPES = "machine native sdk"

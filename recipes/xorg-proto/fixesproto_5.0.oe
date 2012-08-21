@@ -1,0 +1,16 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XFixes: X Fixes extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the X Fixes \
+extension.  This extension is designed to provide server-side support \
+for application work arounds to shortcomings in the core X window \
+system."
+
+
+LICENSE = "MIT & MIT-style"
+
+#CONFLICTS = "fixesext"
+
+RECIPE_TYPES = "sdk machine"
+

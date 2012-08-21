@@ -1,0 +1,8 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XTrap: X event trapping extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the X event \
+trapping extension.  This extension provides the interface which allows \
+for capture and synthesis of core input events."
+

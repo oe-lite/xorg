@@ -1,0 +1,10 @@
+SUMMARY = "X font encoding library"
+
+DESCRIPTION = "libfontenc is a library which helps font libraries \
+portably determine and deal with different encodings of fonts."
+
+require xorg-lib-common.inc
+
+DEPENDS += "zlib xproto font-util"
+
+RECIPE_TYPES = "machine native"

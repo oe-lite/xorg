@@ -1,0 +1,16 @@
+require xorg-proto-common.inc
+
+SUMMARY = "Xlib: C Language X interface headers"
+
+DESCRIPTION = "This package provides the basic headers for the X Window \
+System."
+
+RECIPE_TYPES = "native machine"
+
+LICENSE = "MIT & MIT-style"
+
+SRC_URI += "file://xproto_fix_for_x32.patch"
+
+EXTRA_OECONF_append = " --enable-specs=no"
+
+

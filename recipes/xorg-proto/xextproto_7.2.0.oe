@@ -1,0 +1,19 @@
+require xorg-proto-common.inc
+
+
+DESCRIPTION = "This package provides the wire protocol for several X \
+extensions.  These protocol extensions include DOUBLE-BUFFER, DPMS, \
+Extended-Visual-Information, LBX, MIT_SHM, MIT_SUNDRY-NONSTANDARD, \
+Multi-Buffering, SECURITY, SHAPE, SYNC, TOG-CUP, XC-APPGROUP, XC-MISC, \
+XTEST.  In addition a small set of utility functions are also \
+available."
+
+LICENSE = "MIT & MIT-style"
+
+RECIPE_TYPES = "native sdk machine"
+
+inherit gettext
+
+EXTRA_OECONF_append = " --enable-specs=no"
+
+

@@ -1,0 +1,9 @@
+require xorg-proto-common.inc
+
+SUMMARY = "XFree86-DGA: XFree86 Direct Graphics Access extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the XFree86 \
+Direct Graphics Access extension. This extension allows direct graphics \
+access to a framebuffer-like region, as well as relative mouse \
+reporting."
+

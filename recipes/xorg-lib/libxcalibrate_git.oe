@@ -1,0 +1,26 @@
+SUMMARY = "XCalibrate: Touchscreen calibration library"
+
+DESCRIPTION = "libXCalibrate is a library for performing touchscreen \
+calibration with the kdrive tslib touchscreen driver."
+
+require xorg-lib-common.inc
+
+LICENSE = "MIT-style"
+
+DEPENDS = "libx11 calibrateproto libxext"
+
+SRC_REV = "commit=209d83af61ed38a002c8096377deac292b3e396c"
+SRC_URI = "git://anongit.freedesktop.org/git/xorg/lib/libXCalibrate;protocol=git;${SRC_REV} \
+           file://fix-xcb.patch"
+
+inherit autotools-autoreconf
+
+XORG_PN = "libXCalibrate"
+S = "${SRCDIR}/${XORG_PN}"
+
+FILES_${PN}-locale += "${datadir}/X11/locale"
+
+#do_autoreconf () {
+#	cd ${S}
+#        ./autogen.sh
+#}

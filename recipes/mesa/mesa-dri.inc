@@ -11,6 +11,6 @@ FILES_${PN}-swrast = "${libdir}/dri/swrast*"
 FILES_${PN}-swrast-dbg = "${libdir}/dri/.debug/swrast*"
 RDEPENDS_${PN}-swrast += "libexpat ${COMMON_RDEPENDS}"
 
-EXTRA_OECONF += "--with-driver=dri --disable-egl --disable-gallium --without-gallium-drivers --with-dri-drivers=${DRIDRIVERS}"
+EXTRA_OECONF += "--with-driver=dri --without-gallium-drivers --with-dri-drivers=${DRIDRIVERS} --with-egl-platforms=x11"
 
 FILES_${PN}-dbg += "${libdir}/dri/.debug/*"

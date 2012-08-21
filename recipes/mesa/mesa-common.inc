@@ -20,7 +20,11 @@ inherit autotools-autoreconf pkgconfig auto-package-libs c make c++
 EXTRA_OECONF = "--enable-glu \
                 --disable-glw \
                 --disable-glut \
-                --enable-glx-tls"
+		--enable-glx-tls\
+		"
+FILES_${PN}-libegl-dev += "${includedir}/EGL \
+		           ${includedir}/KHR \
+		       	   ${libdir}/pkgconfig/egl.pc "
 
 AUTO_PACKAGE_LIBS = "EGL GL GLU OSMesa"
 AUTO_PACKAGE_LIBS_RDEPENDS = "${COMMON_RDEPENDS}"

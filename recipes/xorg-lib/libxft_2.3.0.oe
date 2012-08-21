@@ -9,12 +9,14 @@ possible. Finally, it allows applications to use fonts that are not \
 installed system-wide for displaying documents with embedded fonts.  Xft \
 is not compatible with the core fonts system: usage of Xft requires \
 fairly extensive changes to toolkits (user-interface libraries)."
+LICENSE = "MIT"
 
 require xorg-lib-common.inc
+
 inherit library
 
 DEPENDS += "libx11 libxrender freetype fontconfig"
-
+PROVIDES_${PN} =  "xft"
 XORG_PN = "libXft"
 
 RECIPE_TYPES = "machine native"

@@ -13,7 +13,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d44ed0146997856304dfbb512a59a8de \
 PR = "r0"
 PE = "1"
 
-RECIPE_TYPES = "machine sdk"
+BBCLASSEXTEND = "nativesdk"
 
 SRC_URI[md5sum] = "d1ff0c1acc605689919c1ee2fc9b5582"
 SRC_URI[sha256sum] = "990356ebe2e8966aa643287c9a485777957a49299dfb211654df5ff212dec171"

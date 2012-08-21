@@ -1,0 +1,1 @@
+312a2ea708b257520c1af4393b69d73a393a478f  xf86bigfontproto-1.2.0.tar.bz2

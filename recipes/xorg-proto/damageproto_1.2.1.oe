@@ -1,0 +1,12 @@
+require xorg-proto-common.inc
+
+SUMMARY = "Xdamage: X Damage extension headers"
+
+DESCRIPTION = "This package provides the wire protocol for the DAMAGE \
+extension.  The DAMAGE extension allows applications to receive \
+information about changes made to pixel contents of windows and \
+pixmaps."
+
+LICENSE = "MIT-style"
+
+#CONFLICTS = "damageext"

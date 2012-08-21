@@ -1,0 +1,19 @@
+SUMMARY = "XFont: X Font rasterisation library"
+
+DESCRIPTION = "libXfont provides various services for X servers, most \
+notably font selection and rasterisation (through external libraries \
+such as freetype)."
+
+RECIPE_TYPES = "machine native"
+
+require xorg-lib-common.inc
+
+LICENSE= "MIT & MIT-style & BSD"
+
+DEPENDS += "freetype fontcacheproto xtrans fontsproto libfontenc zlib libm xproto"
+
+PROVIDES_${PN} =  "xfont"
+
+XORG_PN = "libXfont"
+
+

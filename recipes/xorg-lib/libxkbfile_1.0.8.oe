@@ -1,0 +1,15 @@
+SUMMARY = "XKB: X Keyboard File manipulation library"
+
+DESCRIPTION = "libxkbfile provides an interface to read and manipulate \
+description files for XKB, the X11 keyboard configuration extension."
+
+require xorg-lib-common.inc
+
+LICENSE = "MIT-style"
+
+DEPENDS += "libx11 kbproto xproto libxcb libxau libxdmcp libdl"
+
+EXTRA_OECONF += "--without-xcb"
+
+RECIPE_TYPES = "machine native"
+

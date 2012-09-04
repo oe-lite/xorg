@@ -1,0 +1,13 @@
+--- xserver-xorg-video-imx-11.09.01.org/src/Makefile.am	2011-07-26 23:22:47.000000000 +0200
++++ xserver-xorg-video-imx-11.09.01/src/Makefile.am	2012-09-03 12:40:53.453580504 +0200
+@@ -24,7 +24,7 @@
+ # _ladir passes a dummy rpath to libtool so the thing will actually link
+ # TODO: -nostdlib/-Bstatic/-lgcc platform magic, not installing the .a, etc.
+ 
+-NEON_CFLAGS=-march=armv7-a -mfpu=neon -mfloat-abi=softfp -Wa,-mfpu=neon
++NEON_CFLAGS=
+ 
+ NEON_CCASFLAGS=$(NEON_CFLAGS) -mthumb-interwork
+ NEON_ASFLAGS=-k -mcpu=cortex-a8 $(NEON_CCASFLAGS)
+
+Diff finished.  Mon Sep  3 12:40:54 2012

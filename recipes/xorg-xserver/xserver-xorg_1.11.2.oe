@@ -2,7 +2,8 @@
 require xserver-xorg-common.inc
 
 PROTO_DEPS += "xf86driproto dri2proto glproto"
-LIB_DEPS += "amd-gpu-x11-bin-mx51-dev mesa-dri-dev mesa-dri-libglu mesa-dri-libgl "
+LIB_DEPS += "mesa-dri-dev mesa-dri-libglu mesa-dri-libgl "
+LIB_DEPS:>MACHINE_imx53qsb += " amd-gpu-x11-bin-mx51-dev"
 
 EXTRA_OECONF += "\
 		 --with-pic \

@@ -1,0 +1,15 @@
+require xorg-app-common.inc
+
+SUMMARY = "Display information utility for X"
+
+DESCRIPTION = "Xdpyinfo is a utility for displaying information about an \
+X server. It is used to examine the capabilities of a server, the \
+predefined values for various parameters used in communicating between \
+clients and the server, and the different types of screens and visuals \
+that are available."
+
+DEPENDS += "libxtst libxext libxxf86vm libxi libxrender libxau recordproto"
+
+export XDPYINFO_LIBS += "-lXi -lX11 -lxcb -lXext -lX11-xcb -lXtst -lXrender "
+
+LD_FLAGS += "-lXi -lX11 -lxcb -lXext -lX11-xcb -lXtst -lXrender "

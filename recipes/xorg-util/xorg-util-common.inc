@@ -10,4 +10,4 @@ SRC_URI = "${XORG_MIRROR}/individual/util/${XORG_PN}-${PV}.tar.gz"
 
 S = "${SRCDIR}/${XORG_PN}-${PV}"
 
-inherit autotools-autoreconf pkgconfig
+inherit autotools pkgconfig

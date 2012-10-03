@@ -7,8 +7,7 @@ LICENSE = "MIT-X"
 DEPENDS = "xserver-xorg libx11 xproto renderproto videoproto randrproto util-macros fontsproto xextproto inputproto pixman libpciaccess libz160 amd-gpu-x11-bin-mx51"
 RDEPENDS_${PN} = "amd-gpu-x11-bin-mx51 libz160"
 
-inherit autotools-autoreconf pkgconfig
-
+inherit autotools pkgconfig
 SRC_URI = "file://xserver-xorg-video-imx-${PV}.tar.gz \
            file://xf86-video-imxfb-fix-m4-hardcodded-paths.patch \
 	   file://mfloat-toolchain-decides.patch \

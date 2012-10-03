@@ -6,6 +6,8 @@ basic functions of the window system."
 
 require xorg-lib-common.inc
 
+# reconf packaged configure uses pkg-config --variable to get
+# includepath for keysyms.h. Result: No PKGCONFIG_SYSROOT prefix.
 inherit siteinfo autotools-autoreconf
 
 
@@ -16,6 +18,11 @@ DEPENDS += "util-macros"
 PROVIDES_${PN} = "x11" 
 
 EXTRA_OECONF += "--with-groff=no --with-ps2pdf=no --with-fop=no --disable-specs"
+AUTORECONF = "${LIBTOOLIZE} --force --automake --copy \
+&& aclocal $acpaths --force \
+&& autoconf $acpaths --force \
+&& automake -a --copy --force; \
+"
 
 PACKAGES =+ "${PN}-xcb"
 

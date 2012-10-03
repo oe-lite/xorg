@@ -14,3 +14,4 @@ LICENSE = "MIT & MIT-style"
 
 RECIPE_TYPES = "sdk machine"
 
+DEPENDS_${PN} += "xextproto"

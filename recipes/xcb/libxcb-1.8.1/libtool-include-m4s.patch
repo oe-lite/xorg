@@ -1,0 +1,23 @@
+Index: libxcb-1.8.1/Makefile.am
+===================================================================
+--- libxcb-1.8.1.orig/Makefile.am
++++ libxcb-1.8.1/Makefile.am
+@@ -1,5 +1,6 @@
+ SUBDIRS=src tests doc
+ 
++ACLOCAL_AMFLAGS = -I m4
+ pkgconfigdir = $(libdir)/pkgconfig
+ 
+ pkgconfig_DATA = xcb.pc
+Index: src/libxcb-1.8.1/configure.ac
+===================================================================
+--- libxcb-1.8.1.orig/configure.ac
++++ libxcb-1.8.1/configure.ac
+@@ -9,6 +9,7 @@ AC_CONFIG_SRCDIR([xcb.pc.in])
+ AM_INIT_AUTOMAKE([foreign dist-bzip2])
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+ 
++AC_CONFIG_MACRO_DIR([m4])
+ AM_PATH_PYTHON([2.6])
+ 
+ PKG_CHECK_MODULES(CHECK, [check >= 0.9.4], [HAVE_CHECK=yes], [HAVE_CHECK=no])

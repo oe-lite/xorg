@@ -15,6 +15,6 @@ require xorg-lib-common.inc
 inherit library
 
 DEPENDS += "libx11 damageproto libxfixes libxext xproto"
-DEPENDS_${PN} += "damageproto"
+DEPENDS_${PN} += "damageproto libxfixes"
 
 XORG_PN = "libXdamage"

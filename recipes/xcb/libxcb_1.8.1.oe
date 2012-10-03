@@ -5,6 +5,7 @@ LICENSE = "MIT"
 RECIPE_TYPES = "machine native"
 
 DEPENDS += "libpthread-stubs native:xcb-proto libxdmcp"
+DEPENDS_${PN} += "libpthread-stubs libxau libxdmcp"
 
 PARALLEL_MAKE = ""
 

@@ -10,6 +10,7 @@ PACKAGES =+ "${PN}-swrast ${PN}-swrast-dbg"
 FILES_${PN}-swrast = "${libdir}/dri/swrast*"
 FILES_${PN}-swrast-dbg = "${libdir}/dri/.debug/swrast*"
 RDEPENDS_${PN}-swrast += "libexpat ${COMMON_RDEPENDS}"
+DEPENDS_${PN} += "libxdamage libxxf86vm"
 
 EXTRA_OECONF += "--with-driver=dri --without-gallium-drivers --with-dri-drivers=${DRIDRIVERS} --with-egl-platforms=x11"
 

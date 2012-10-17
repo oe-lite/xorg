@@ -1,0 +1,15 @@
+SUMMARY = "XTest: X Test extension library"
+
+DESCRIPTION = "This extension is a minimal set of client and server \
+extensions required to completely test the X11 server with no user \
+intervention."
+
+LICENSE = "MIT"
+
+require xorg-lib-common.inc
+inherit library
+DEPENDS += "libxext recordproto inputproto libxi"
+RDEPENDS_${PN} += "libxi libxext libx11"
+XORG_PN = "libXtst"
+
+RECIPE_TYPES = "machine native sdk"

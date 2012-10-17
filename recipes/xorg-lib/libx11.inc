@@ -18,7 +18,8 @@ DEPENDS += "util-macros"
 PROVIDES_${PN} = "x11" 
 
 EXTRA_OECONF += "--with-groff=no --with-ps2pdf=no --with-fop=no --disable-specs"
-AUTORECONF = "${LIBTOOLIZE} --force --automake --copy \
+AUTORECONF_CMD = " \
+   ${LIBTOOLIZE} --force --automake --copy \
 && aclocal $acpaths --force \
 && autoconf $acpaths --force \
 && automake -a --copy --force; \

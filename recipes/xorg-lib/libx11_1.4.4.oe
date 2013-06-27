@@ -17,6 +17,7 @@ SRC_URI += " file://keysymdef_include.patch \
              file://x11_disable_makekeys.patch \
              file://0001-Add-_XGetRequest-as-substitute-for-GetReq-GetReqExtr.patch \
              file://makekeys_crosscompile.patch \
+             file://pkgconfig.patch \
              "
 
 

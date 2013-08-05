@@ -1,0 +1,20 @@
+SUMMARY = "X11 Font Services library"
+
+DESCRIPTION = """
+libFS, the Font Services library, provides various functions useful to X11 font servers, and clients connecting to font servers. It is not used outside of these implementations. 
+"""
+
+RECIPE_TYPES = "machine"
+
+require xorg-lib-common.inc
+
+
+LICENSE = "MIT-style"
+
+DEPENDS += " xproto fontsproto xtrans "
+PROVIDES_${PN} =  "fs"
+
+
+XORG_PN = "libFS"
+
+

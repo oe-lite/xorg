@@ -13,5 +13,5 @@ RDEPENDS_${PN} += "mkfontscale"
 
 RDEPENDS_${PN}:native = " native:mkfontscale"
 
-RECIPE_TYPES = "native"
+RECIPE_TYPES = "machine native"
 

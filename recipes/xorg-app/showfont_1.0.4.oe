@@ -1,0 +1,14 @@
+require xorg-app-common.inc
+
+SUMMARY = "showfont application - font dumper for X font server"
+
+DESCRIPTION = """
+showfont displays data about a font that matches the given pattern.
+The information shown includes font information, font properties,
+character metrics, and character bitmaps.
+"""
+
+LICENSE = "MIT-X"
+
+DEPENDS += "libfs util-macros fontsproto"
+RDEPENDS_${PN} += "libfs"

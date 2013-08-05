@@ -12,4 +12,6 @@ LICENSE = "MIT-style"
 DEPENDS += "libxext videoproto"
 DEPENDS_${PN} += "${DEPENDS}"
 
+RDEPENDS_${PN} += "libxext"
+
 XORG_PN = "libXv"

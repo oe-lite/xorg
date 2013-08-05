@@ -1,0 +1,10 @@
+require xorg-app-common.inc
+
+SUMMARY = "xset - user preference utility for X"
+
+DESCRIPTION = "This program is used to set various user preference options of the display"
+
+DEPENDS += "util-macros libxmu"
+
+LICENSE = "MIT"
+

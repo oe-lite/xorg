@@ -1,0 +1,8 @@
+require xorg-app-common.inc
+
+inherit autotools-autoreconf pkgconfig
+
+DEPENDS += " util-macros libx11 libxau libxt libxaw libxmu libice libsm libxext libxpm libxft libxrender fontconfig libxkbfile"
+RDEPENDS_${PN} += "libx11 libxau libxt libxext libxmu libsm libice libxaw libxrender libxft"
+
+export XCLOCK_LIBS = "-lXt -ldl -lXmu -lXext -lXaw"

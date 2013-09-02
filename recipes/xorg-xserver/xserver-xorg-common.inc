@@ -4,14 +4,8 @@ LICENSE = "MIT-X"
 
 require conf/fetch/xorg.conf
 
-# xf86-*-* packages depend on an X server built with the xfree86 DDX
-# so we have a virtual to represent that:
-# deprecated, we should use virtual/xserver instead
-PROVIDES_${PN} = "xserver-xf86"
-
 # Other packages tend to just care that there is *an* X server:
 PROVIDES_${PN} += "xserver"
-
 
 XORG_PN = "xorg-server"
 SRC_URI = "${XORG_MIRROR}/individual/xserver/${XORG_PN}-${PV}.tar.bz2"

@@ -1,8 +1,6 @@
-# Append path for freescale layer to include bsp xorg.conf 
+# override this configuration with your own recipe using "DEFAULT_PREFERENCE=10"
 LICENSE = "MIT-X"
-SRC_URI = "file://imx53qsb/xorg.conf"
-
-COMPATIBLE_MACHINES = "imx53qsb b740 rpi"
+SRC_URI = "file://xorg.conf"
 
 do_install() {
 	mkdir -p ${D}${sysconfdir}/X11

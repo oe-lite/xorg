@@ -1,0 +1,12 @@
+--- xinput_calibrator-0.7.5/scripts/xinput_calibrator_pointercal.sh.old	2013-08-29 10:33:18.653968292 +0200
++++ xinput_calibrator-0.7.5/scripts/xinput_calibrator_pointercal.sh	2013-08-29 10:34:50.557965576 +0200
+@@ -15,7 +15,8 @@
+   echo "Using calibration data stored in $CALFILE"
+   . $CALFILE
+ else
+-  CALDATA=`$BINARY -v | tee $LOGFILE | grep '    xinput set' | sed 's/^    //g; s/$/;/g'`
++  CALDATA=`$BINARY -v --output-type xinput | tee $LOGFILE | \
++	grep 'xinput set-int-prop'`
+   if [ ! -z "$CALDATA" ] ; then
+     echo $CALDATA > $CALFILE
+     echo "Calibration data stored in $CALFILE (log in $LOGFILE)"

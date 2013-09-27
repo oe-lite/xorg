@@ -2,17 +2,17 @@ DESCRIPTION = "X.Org font package creation/installation utilities"
 
 require xorg-font-common.inc
 
-inherit pkgconfig
+inherit pkgconfig 
 #Unicode is MIT
 LICENSE = "BSD & MIT"
 
 RECIPE_TYPES = "native machine"
 
-DEPENDS = "encodings util-macros"
+DEPENDS = "encodings util-macros libc"
 DEPENDS:native = " native:util-macros"
-DEPENDS_${PN} += "font-util-dev"
+DEPENDS_${PN} += "font-util-dev libc"
 DEPENDS_${PN}-dev = ""
-RDEPENDS_${PN} = "mkfontdir mkfontscale encodings"
+RDEPENDS_${PN} = "mkfontdir mkfontscale libc"
 RDEPENDS_${PN}:native = " native:mkfontdir  native:mkfontscale"
 
 

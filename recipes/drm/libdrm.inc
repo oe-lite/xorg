@@ -10,18 +10,31 @@ inherit autotools-autoreconf pkgconfig library
 SRC_URI = "http://dri.freedesktop.org/libdrm/libdrm-${PV}.tar.bz2"
 
 #libpciaccess is required starting from libdrm 2.4.26
-DEPENDS = "libpthread-stubs libx11"
+DEPENDS = "libpciaccess libpthread-stubs libx11"
 
-COMMON_DEPENDS += "librt libc libgcc libpciaccess"
+COMMON_DEPENDS += "librt libc libgcc"
 DEPENDS += "${COMMON_DEPENDS}"
 DEPENDS_${PN} += "${COMMON_DEPENDS}"
 RDEPENDS_${PN} += "${COMMON_DEPENDS}"
 
-PACKAGES =+ "${PN}-tests ${PN}-drivers ${PN}-kms"
+PACKAGES =+ "${PN}-tests ${PN}-radeon ${PN}-nouveau ${PN}-kms"
+PROVIDES_${PN}-kms = "libkms"
+PROVIDES_${PN}-radeon =  "libdrm_radeon"
+PROVIDES_${PN}-nouveau = "libdrm_nouveau"
+PROVIDES_${PN} = "libdrm"
+
 FILES_${PN}-tests = "${bindir}/dr* ${bindir}/mode*"
-FILES_${PN}-drivers = "${libdir}/libdrm_*.so.*"
+FILES_${PN}-nouveau = "${libdir}/libdrm_nouveau*.so.*"
+FILES_${PN}-radeon = "${libdir}/libdrm_radeon*.so.*"
 FILES_${PN}-kms = "${libdir}/libkms*.so.*"
 
+
+DEPENDS_${PN}-tests     = "${PN} ${PN}-kms"
+DEPENDS_${PN}-nouveau   = "${PN}"
+RDEPENDS_${PN}-nouveau += "${PN}"
+DEPENDS_${PN}-radeon    = "${PN}"
+RDEPENDS_${PN}-radeon  += "${PN}"
+DEPENDS_${PN}-kms = "libc"
 
 MIRRORS = """
 http://mirrors.wayround.org/www.freedesktop.org/dri/dri.freedesktop.org/libdrm/ http://mirrors.wayround.org/www.freedesktop.org/dri/dri.freedesktop.org/libdrm/

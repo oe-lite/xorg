@@ -8,5 +8,5 @@ SRC_URI += "file://nocompiler.patch"
 
 DEPENDS = " native:util-macros"
 RDEPENDS_${PN} = "encodings font-util"
-#RDEPENDS_${PN}_ native:virtclass = " native:font-util"
+
 

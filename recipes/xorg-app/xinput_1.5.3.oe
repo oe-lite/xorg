@@ -19,6 +19,4 @@ LDFLAGS += "-lXi -lXext -lX11 -ldl"
 
 FILES_${PN} += "  /usr/lib/X11/${PN} /usr/share/X11/app-defaults/"
 
-CFLAGS += "-g"
-
 

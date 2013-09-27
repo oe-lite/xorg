@@ -23,9 +23,5 @@ RDEPENDS_${PN}-dev = ""
 PACKAGES += "python-xcbgen"
 FILES_python-xcbgen = "${libdir}/python*"
 
-#RRECOMMENDS_${PN}-dbg = "${PN}-dev (= ${EXTENDPKGV})"
-
-#DEPENDS:native += " python-native"
-
 EXTRA_OECONF += "--prefix=${prefix}/"
 

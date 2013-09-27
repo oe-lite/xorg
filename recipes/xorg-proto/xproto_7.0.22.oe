@@ -11,6 +11,6 @@ LICENSE = "MIT & MIT-style"
 
 SRC_URI += "file://xproto_fix_for_x32.patch"
 
-EXTRA_OECONF_append = " --enable-specs=no"
+EXTRA_OECONF += " --enable-specs=no"
 
 

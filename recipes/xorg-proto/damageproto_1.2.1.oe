@@ -9,4 +9,3 @@ pixmaps."
 
 LICENSE = "MIT-style"
 
-#CONFLICTS = "damageext"

@@ -13,8 +13,6 @@ inherit gettext library
 LICENSE = "MIT-style"
 
 DEPENDS += " xproto"
-#PROVIDES_${PN} =  "${PN}"
-
 
 XORG_PN = "libXau"
 

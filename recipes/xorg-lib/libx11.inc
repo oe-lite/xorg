@@ -58,6 +58,5 @@ do_compile_makekeys() {
 	cd ../../
 }
 
-# Multiple libx11 derivatives from from this file and are selected by virtual/libx11
-# A world build should only build the correct version, not all of them.
-EXCLUDE_FROM_WORLD = "1"
+
+

@@ -34,14 +34,3 @@ do_install_xorg_fonts() {
 
 FILES_${PN} += " ${libdir}/X11/fonts ${datadir}"
 
-pkg_postinst_${PN} () {
-        set -x
-        for fontdir in `find $D/usr/lib/X11/fonts -type d`; do
-                mkfontdir $fontdir
-                mkfontscale $fontdir
-        done
-        for fontdir in `find $D/usr/share/fonts/X11 -type d`; do
-                mkfontdir $fontdir
-                mkfontscale $fontdir
-        done
-}

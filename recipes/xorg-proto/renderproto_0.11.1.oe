@@ -8,8 +8,6 @@ X window system."
 
 LICENSE = "MIT-style"
 
-#CONFLICTS = "renderext"
-
 RECIPE_TYPES = "native sdk machine"
 
 

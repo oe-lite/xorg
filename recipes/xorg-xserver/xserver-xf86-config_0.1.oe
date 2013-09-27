@@ -7,4 +7,3 @@ do_install() {
 	/usr/bin/install -c -m 644 ${SRCDIR}/xorg.conf ${D}${sysconfdir}/X11/xorg.conf
 }
 
-

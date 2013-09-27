@@ -8,5 +8,4 @@ mechanisms for compositing and off-screen storage."
 
 LICENSE = "MIT & MIT-style"
 
-#CONFLICTS = "compositeext"
 

@@ -16,11 +16,7 @@ LICENSE = "MIT-X"
 PARALLEL_MAKE = ""
 DEPENDS = "xproto libxau xcb-proto python-xcbgen"
 
-#removed native:libxslt (no need for GNOME)
-# DEPENDS += "native:xsltprop native:gperf"
-
 SRC_URI = "http://xcb.freedesktop.org/dist/libxcb-${PV}.tar.bz2"
-#           file://xcbincludedir.patch"
 
 PACKAGES =+ "libxcb-composite libxcb-damage libxcb-dpms libxcb-glx \
              libxcb-randr libxcb-record libxcb-render libxcb-res \
@@ -30,7 +26,6 @@ PACKAGES =+ "libxcb-composite libxcb-damage libxcb-dpms libxcb-glx \
              libxcb-dri2 libxcb-xinerama"
 
 FILES_${PN} = "${libdir}/libxcb.so.*"
-#FILES_${PN}-dev = "${libdir}/libxcb.* ${libdir}/pkgconfig/*.pc ${includedir}/xcb/*.h"
 FILES_libxcb-dri2 = "${libdir}/libxcb-dri2.so.*"
 FILES_libxcb-composite = "${libdir}/libxcb-composite.so.*"
 FILES_libxcb-damage = "${libdir}/libxcb-damage.so.*"
@@ -70,5 +65,3 @@ do_patch_configure () {
 }
 
 PKG_CONFIG_LIBDIR        =. "${HOST_SYSROOT}${base_libdir}/pkgconfig:"
-#export PKG_CONFIG_PATH          = "${BUILD_SYSROOT}${datadir}/pkgconfig"
-#export PKG_CONFIG_SYSROOT_DIR   = "${BUILD_SYSROOT}"

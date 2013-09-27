@@ -8,7 +8,5 @@ resize, rotate and reflect the root window of a screen."
 
 LICENSE = "MIT-style"
 
-#CONFLICTS = "randrext"
-
 RECIPE_TYPES = "sdk machine"
 

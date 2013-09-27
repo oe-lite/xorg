@@ -15,6 +15,7 @@ DEPENDS_${PN}           = "${PN}-dev_${PV}"
 DEPENDS_${PN}-dev       = ""
 
 inherit autotools pkgconfig
+
 EXTRA_OECONF = "--with-fop=no --without-xmlto"
 
 # ${PN} is empty so we need to tweak -dev and -dbg package dependencies

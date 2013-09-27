@@ -6,8 +6,6 @@ BUGTRACKER = "http://bugs.freedesktop.org/buglist.cgi?product=XCB"
 LICENSE = "MIT"
 
 PARALLEL_MAKE = ""
-#DEPENDS = "xcb-proto xproto libxau  native:libxslt"
-# DEPENDS += " native:xsltproc  native:gperf"
 
 DEPENDS_${PN}           = "${PN}-dev_${PV}"
 DEPENDS_${PN}-dev       = ""

@@ -14,5 +14,5 @@ RDEPENDS_${PN} += "libxext"
 
 XORG_PN = "libXi"
 
-EXTRA_OECONF_append = " --enable-specs=no"
+EXTRA_OECONF += " --enable-specs=no"
 

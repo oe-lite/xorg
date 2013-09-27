@@ -10,8 +10,6 @@ system."
 
 LICENSE = "MIT & MIT-style"
 
-#CONFLICTS = "fixesext"
-
 RECIPE_TYPES = "sdk machine"
 
 DEPENDS_${PN} += "xextproto"

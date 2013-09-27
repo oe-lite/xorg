@@ -6,8 +6,6 @@ inherit autotools-autoreconf pkgconfig c++
 
 DEPENDS += "libx11 libxi libxrandr"
 RDEPENDS_${PN} = "xinput"
-#RRECOMMENDS_${PN} = "pointercal-xinput"
-
 
 export LDFLAGS += "-L${HOST_SYSROOT}/lib -L${HOST_SYSROOT}${libdir} -lXi -lX11 -lxcb -lXext -ldl -lXrender"
 

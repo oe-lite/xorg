@@ -20,7 +20,3 @@ S = "${SRCDIR}/${XORG_PN}"
 
 FILES_${PN}-locale += "${datadir}/X11/locale"
 
-#do_autoreconf () {
-#	cd ${S}
-#        ./autogen.sh
-#}

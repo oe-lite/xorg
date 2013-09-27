@@ -63,7 +63,6 @@ PACKAGES =+ "${PN}-security-policy \
              ${PN}-module-libxf1bpp \
              ${PN}-module-libxf4bpp"
 
-RRECOMMENDS_${PN} += "${PN}-security-policy xkeyboard-config rgb xserver-xf86-config"
 RDEPENDS_${PN}-xvfb += "xkeyboard-config"
 RDEPENDS_${PN}-extension-glx += "mesa-dri-swrast"
 
@@ -126,10 +125,6 @@ EXTRA_OECONF += "${XINERAMA_CONF} \
 "
 
 MACHINE_CFLAGS += "-I${MACHINE_SYSROOT}${includedir}/pixman-1"
-
-PACKAGECONFIG ??= "udev"
-PACKAGECONFIG[hal] = "--enable-config-hal,--disable-config-hal,,hal"
-PACKAGECONFIG[udev] = "--enable-config-udev,--disable-config-udev,udev"
 
 do_install[postfuncs] += "do_install_append"
 do_install_append () {

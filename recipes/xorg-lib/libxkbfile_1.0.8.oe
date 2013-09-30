@@ -7,7 +7,9 @@ require xorg-lib-common.inc
 
 LICENSE = "MIT-style"
 
-DEPENDS += "libx11 kbproto xproto libxcb libxau libxdmcp libdl"
+LIB_DEPENDS += "libx11  libxcb libxau libxdmcp libdl"
+DEPENDS += "kbproto xproto ${LIB_DEPENDS}"
+DEPENDS_${PN} += "${LIB_DEPENDS}"
 
 EXTRA_OECONF += "--without-xcb"
 

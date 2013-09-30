@@ -10,10 +10,10 @@ require xorg-lib-common.inc
 
 LICENSE= "MIT & MIT-style & BSD"
 
-DEPENDS += "freetype fontcacheproto xtrans fontsproto libfontenc zlib libm xproto"
-
-PROVIDES_${PN} =  "xfont"
-
+LIB_DEPENDS = "freetype libfontenc zlib libm"
+DEPENDS += "${LIB_DEPENDS} fontcacheproto xtrans fontsproto xproto "
+DEPENDS_${PN} = "${LIB_DEPENDS}"
+RDEPENDS_${PN} = "${LIB_DEPENDS}"
 XORG_PN = "libXfont"
 
 

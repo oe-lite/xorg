@@ -10,7 +10,7 @@ each other and independently from the core devices."
 
 DEPENDS += "libxext inputproto libx11 xproto"
 DEPENDS_${PN} += "libxext inputproto"
-RDEPENDS_${PN} += "libxext"
+RDEPENDS_${PN} += "libxext libx11"
 
 XORG_PN = "libXi"
 

@@ -18,37 +18,20 @@ DEPENDS = "xproto libxau xcb-proto python-xcbgen"
 
 SRC_URI = "http://xcb.freedesktop.org/dist/libxcb-${PV}.tar.bz2"
 
-PACKAGES =+ "libxcb-composite libxcb-damage libxcb-dpms libxcb-glx \
-             libxcb-randr libxcb-record libxcb-render libxcb-res \
-             libxcb-screensaver libxcb-shape libxcb-shm libxcb-sync \
-             libxcb-xevie libxcb-xf86dri libxcb-xfixes libxcb-xlib \
-             libxcb-xprint libxcb-xtest libxcb-xv libxcb-xvmc \
-             libxcb-dri2 libxcb-xinerama"
+inherit auto-package-libs library
 
-FILES_${PN} = "${libdir}/libxcb.so.*"
-FILES_libxcb-dri2 = "${libdir}/libxcb-dri2.so.*"
-FILES_libxcb-composite = "${libdir}/libxcb-composite.so.*"
-FILES_libxcb-damage = "${libdir}/libxcb-damage.so.*"
-FILES_libxcb-dpms = "${libdir}/libxcb-dpms.so.*"
-FILES_libxcb-glx = "${libdir}/libxcb-glx.so.*"
-FILES_libxcb-randr = "${libdir}/libxcb-randr.so.*"
-FILES_libxcb-record = "${libdir}/libxcb-record.so.*"
-FILES_libxcb-render = "${libdir}/libxcb-render.so.*"
-FILES_libxcb-res = "${libdir}/libxcb-res.so.*"
-FILES_libxcb-screensaver = "${libdir}/libxcb-screensaver.so.*"
-FILES_libxcb-shape = "${libdir}/libxcb-shape.so.*"
-FILES_libxcb-shm = "${libdir}/libxcb-shm.so.*"
-FILES_libxcb-sync = "${libdir}/libxcb-sync.so.*"
-FILES_libxcb-xevie = "${libdir}/libxcb-xevie.so.*"
-FILES_libxcb-xf86dri = "${libdir}/libxcb-xf86dri.so.*"
-FILES_libxcb-xfixes = "${libdir}/libxcb-xfixes.so.*"
-FILES_libxcb-xinerama = "${libdir}/libxcb-xinerama.so.*"
-FILES_libxcb-xlib = "${libdir}/libxcb-xlib.so.*"
-FILES_libxcb-xprint = "${libdir}/libxcb-xprint.so.*"
-FILES_libxcb-xtest = "${libdir}/libxcb-xtest.so.*"
-FILES_libxcb-xv = "${libdir}/libxcb-xv.so.*"
-FILES_libxcb-xvmc = "${libdir}/libxcb-xvmc.so.*"
+AUTO_PACKAGE_LIBS = "xcb-composite xcb-damage xcb-dpms xcb-glx \
+             xcb-randr xcb-record xcb-render xcb-res \
+             xcb-screensaver xcb-shape xcb-shm xcb-sync \
+             xcb-xevie xcb-xf86dri xcb-xfixes \
+             xcb-xprint xcb-xtest xcb-xv xcb-xvmc \
+             xcb-dri2 xcb-xinerama"
 
+
+AUTO_PACKAGE_LIBS_DEV_DEPENDS = "libxau libxdmcp libc libxcb"
+AUTO_PACKAGE_LIBS_DEV_RDEPENDS = "libxau libxdmcp libc libxcb"
+
+PROVIDES_${PN} = "libxcb"
 
 # XCBPROTO_XCBINCLUDEDIR is setup based on `pkg-config --variable=xcbincludedir xcb-proto`
 # but the xcbincludedir variable doesn't point into the staging area, so it needs some

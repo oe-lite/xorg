@@ -5,8 +5,8 @@ LICENSE = "MIT"
 RECIPE_TYPES = "machine native"
 SRC_URI += "file://libtool-include-m4s.patch"
 
-DEPENDS += "libpthread-stubs native:xcb-proto libxdmcp"
-DEPENDS_${PN} += "libpthread-stubs libxau libxdmcp"
+DEPENDS += "libpthread-stubs native:xcb-proto libxdmcp libc"
+DEPENDS_${PN} += "libpthread-stubs libxau libxdmcp libc"
 
 PARALLEL_MAKE = ""
 

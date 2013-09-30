@@ -13,8 +13,8 @@ require xorg-lib-common.inc
 LICENSE = "MIT-style"
 
 DEPENDS += "xproto libx11 xextproto"
-PROVIDES_${PN} =  "xext"
 DEPENDS_${PN} += "xextproto libx11"
+RDEPENDS_${PN} += "libx11"
 
 XORG_PN = "libXext"
 

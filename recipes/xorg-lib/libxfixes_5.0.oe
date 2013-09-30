@@ -9,7 +9,8 @@ require xorg-lib-common.inc
 LICENSE = "MIT-style"
 
 DEPENDS += "libx11 xproto fixesproto xextproto"
-DEPENDS_${PN} += "fixesproto"
+DEPENDS_${PN} += "fixesproto libx11"
+RDEPENDS_${PN} += "libx11"
 XORG_PN = "libXfixes"
 
 RECIPE_TYPES = "native sdk machine"

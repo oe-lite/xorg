@@ -11,7 +11,8 @@ require xorg-lib-common.inc
 LICENSE = "MIT-style"
 
 DEPENDS += "libice xproto xtrans e2fsprogs"
-
+DEPENDS_${PN} += "libice"
+RDEPENDS_${PN} += "libice"
 
 XORG_PN = "libSM"
 

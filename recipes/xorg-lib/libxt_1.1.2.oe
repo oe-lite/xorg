@@ -14,9 +14,10 @@ require xorg-lib-common.inc
 
 LICENSE = "MIT & MIT-style"
 
-
-DEPENDS += "util-linux libxcb libsm libx11 kbproto libxdmcp libice libdl"
-PROVIDES_${PN} =  "xt"
+LIB_DEPENDS += "libxcb libsm libx11 libxdmcp"
+DEPENDS += "util-linux kbproto ${LIB_DEPENDS}"
+DEPENDS_${PN} += "${LIB_DEPENDS}"
+RDEPENDS_${PN} += "${LIB_DEPENDS}"
 
 XORG_PN = "libXt"
 

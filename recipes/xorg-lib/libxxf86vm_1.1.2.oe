@@ -10,4 +10,7 @@ require xorg-lib-common.inc
 LICENSE = "MIT"
 
 DEPENDS += "libxext xf86vidmodeproto xproto libx11"
+DEPENDS_${PN} += "libxext xf86vidmodeproto xproto libx11"
+RDEPENDS_${PN} += "libxext libx11"
+
 XORG_PN = "libXxf86vm"

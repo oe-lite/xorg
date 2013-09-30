@@ -12,8 +12,9 @@ LICENSE = "MIT-style"
 
 RECIPE_TYPES = "machine native sdk"
 
-DEPENDS += "libx11 renderproto xproto xdmcp"
-DEPENDS_${PN} += "renderproto libx11"
+DEPENDS += "libx11 renderproto xproto libxdmcp"
+DEPENDS_${PN} += "renderproto libx11 libxdmcp"
+RDEPENDS_${PN} += "libx11 libxdmcp"
 
 XORG_PN = "libXrender"
 

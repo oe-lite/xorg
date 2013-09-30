@@ -9,12 +9,14 @@ RECIPE_TYPES = "native sdk machine"
 
 require xorg-lib-common.inc
 
-inherit gettext library
+inherit gettext 
 
 LICENSE = "MIT-style"
 
-DEPENDS += " xproto x11 xext xt xmu libxpm libsm libice "
-RDEPENDS_${PN} += " libxpm "
+LIB_DEPENDS = "libx11 libxext libxt libxmu libxpm libsm"
+DEPENDS += "${LIB_DEPENDS}"
+DEPENDS_${PN} += "${LIB_DEPENDS}"
+RDEPENDS_${PN} += "${LIB_DEPENDS}"
 
 XORG_PN = "libXaw"
 

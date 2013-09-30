@@ -9,7 +9,8 @@ devices which may be combined into a single logical X screen."
 LICENSE = "MIT"
 
 DEPENDS += "libxext xineramaproto"
-DEPENDS_${PN} += "xineramaproto"
+DEPENDS_${PN} += "xineramaproto libxext"
+RDEPENDS_${PN} += "libxext"
 
 XORG_PN = "libXinerama"
 

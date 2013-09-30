@@ -10,11 +10,12 @@ require xorg-lib-common.inc
 
 LICENSE = "MIT-style"
 
-DEPENDS += "xproto xtrans"
-PROVIDES_${PN} =  "ice"
-
+DEPENDS += "xproto xtrans libc"
+DEPENDS_${PN} += "libc"
+RDEPENDS_${PN} += "libc"
 
 XORG_PN = "libICE"
 
 RECIPE_TYPES = "native machine"
+
 

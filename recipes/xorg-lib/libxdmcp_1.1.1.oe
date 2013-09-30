@@ -12,8 +12,9 @@ inherit gettext
 
 LICENSE = "MIT-style"
 
-DEPENDS += "xproto"
-PROVIDES_${PN} =  "xdmcp"
+DEPENDS += "xproto libc"
+DEPENDS_${PN} += "libc"
+RDEPENDS_${PN} += "libc"
 
 XORG_PN = "libXdmcp"
 

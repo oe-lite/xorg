@@ -11,7 +11,8 @@ DEPENDS_${PN}-dev       = ""
 
 S = "${SRCDIR}/${XORG_PN}-${PV}"
 
-inherit autotools pkgconfig
+inherit autotools pkgconfig library
+PROVIDES_${PN} += "${XORG_PN}"
 
 EXTRA_OECONF = "--enable-malloc0returnsnull --with-fop=no --without-xmlto"
 

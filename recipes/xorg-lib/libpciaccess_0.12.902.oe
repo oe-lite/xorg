@@ -9,5 +9,6 @@ SRC_URI += "file://fix_deletion_of_last_handle.patch"
 
 LICENSE = "MIT & MIT-style"
 
-DEPENDS += "xproto libx11"
-
+DEPENDS += "xproto libx11 libc"
+DEPENDS_${PN} += "libc"
+RDEPENDS_${PN} += "libx11"

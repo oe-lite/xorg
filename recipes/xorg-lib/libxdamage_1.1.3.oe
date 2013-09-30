@@ -12,9 +12,9 @@ amount of data transmitted as well as reduce the processing latency once \
 the repaint operation has started."
 
 require xorg-lib-common.inc
-inherit library
 
 DEPENDS += "libx11 damageproto libxfixes libxext xproto"
-DEPENDS_${PN} += "damageproto libxfixes"
+DEPENDS_${PN} += "damageproto libxfixes libx11"
+RDEPENDS_${PN} += "libx11 libxfixes"
 
 XORG_PN = "libXdamage"

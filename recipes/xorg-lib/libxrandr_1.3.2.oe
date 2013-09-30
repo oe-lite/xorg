@@ -8,6 +8,9 @@ require xorg-lib-common.inc
 
 LICENSE = "MIT-style"
 
-DEPENDS += "libx11 randrproto libxrender libxext renderproto xextproto xproto"
-DEPENDS_${PN} += "randrproto libxrender libx11 libxext"
+LIB_DEPENDS += "libx11 libxrender libxext"
+DEPENDS += "${LIB_DEPENDS} randrproto renderproto xextproto xproto"
+DEPENDS_${PN} += "${LIB_DEPENDS} randrproto"
+RDEPENDS_${PN} += "${LIB_DEPENDS}"
+
 XORG_PN = "libXrandr"

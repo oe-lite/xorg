@@ -10,6 +10,8 @@ is used by the mkfontdir program."
 
 RECIPE_TYPES = "machine native"
 
-DEPENDS += " zlib libfontenc freetype libx11"
+LIB_DEPENDS = "zlib freetype libx11 libfontenc"
+DEPENDS += "${LIB_DEPENDS}"
+RDEPENDS_${PN} += "${LIB_DEPENDS}"
 
 

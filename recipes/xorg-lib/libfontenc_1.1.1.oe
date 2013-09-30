@@ -5,6 +5,11 @@ portably determine and deal with different encodings of fonts."
 
 require xorg-lib-common.inc
 
-DEPENDS += "zlib xproto font-util"
+LIB_DEPENDS = "zlib libc"
+DEPENDS += "${LIB_DEPENDS} xproto font-util"
+DEPENDS_${PN} += "${LIB_DEPENDS}"
+RDEPENDS_${PN} += "${LIB_DEPENDS}"
+
+PROVIDES_${PN} += "libfontenc fontenc"
 
 RECIPE_TYPES = "machine native"

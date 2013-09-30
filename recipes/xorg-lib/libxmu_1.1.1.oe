@@ -7,21 +7,18 @@ Widgets. A subset of the functions that do not rely on the Athena \
 Widgets (libXaw) or X Toolkit Instrinsics (libXt) are provided in a \
 second library, libXmuu."
 
-inherit autotools pkgconfig library
-
 require xorg-lib-common.inc
 
 LICENSE = "MIT & MIT-style"
 
-DEPENDS += "libxt libxext libx11 libsm libice"
-PROVIDES_${PN} =  "xmu"
-
+DEPENDS += "libxt libxext libx11 libsm"
+DEPENDS_${PN} += "${DEPENDS}"
+RDEPENDS_${PN} += "${DEPENDS}"
 
 XORG_PN = "libXmu"
 
-LEAD_SONAME = "libXmu"
-
 PACKAGES =+ "libxmuu libxmuu-dev"
+PROVIDES_${PN} += "libXmuu"
 
 FILES_libxmuu = "${libdir}/libXmuu.so.*"
 FILES_libxmuu-dev = "${libdir}/libXmuu.so"

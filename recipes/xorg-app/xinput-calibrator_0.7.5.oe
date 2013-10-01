@@ -2,17 +2,16 @@ DESCRIPTION = "A generic touchscreen calibration program for X.Org"
 HOMEPAGE = "http://www.freedesktop.org/wiki/Software/xinput_calibrator"
 LICENSE = "MIT/X11"
 
+require xorg-app-common.inc
+
 SRC_URI = "http://github.com/downloads/tias/xinput_calibrator/xinput_calibrator-${PV}.tar.gz"
 SRC_URI += "file://calib_once.patch"
 
-inherit autotools-autoreconf pkgconfig c++ 
-
-DEPENDS += "libx11 libxi libxrandr"
-RDEPENDS_${PN} = "xinput"
-
-export LDFLAGS += "-L${HOST_SYSROOT}/lib -L${HOST_SYSROOT}${libdir} -lXi -lX11 -lxcb -lXext -ldl -lXrender"
-
 S = "${SRCDIR}/xinput_calibrator-${PV}"
+
+LIB_DEPENDS = "libxi libxrandr libm libstdc++"
+DEPENDS += "${LIB_DEPENDS}"
+RDEPENDS_${PN} += "xinput ${LIB_DEPENDS}"
 
 do_install[postfuncs] += "do_install_append"
 

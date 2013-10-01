@@ -1,8 +1,4 @@
 require xorg-app-common.inc
 
-inherit autotools-autoreconf pkgconfig
-
-DEPENDS += " util-macros libx11 libxau libxt libxext libxmu libsm libice libm libxcb libdl"
-RDEPENDS_${PN} += "libx11 libxau libxt libxext libxmu libsm libice"
-
-export XEYES_LIBS = "-lXt -ldl -lXmu -lXext"
+DEPENDS += "libxt libxext libxmu libm"
+RDEPENDS_${PN} += "libxt libxext libxmu libm"

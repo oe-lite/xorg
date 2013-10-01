@@ -3,20 +3,8 @@ SUMMARY = "Runtime configuration and test of XInput devices"
 DESCRIPTION = "Xinput is an utility for configuring and testing XInput devices"
 
 LICENSE = "MIT-X"
-DEPENDS = "native:util-macros libx11 xproto libxi inputproto libxext libdl"
 
-DEPENDS += "libx11-dbg libxi-dbg libxext-dbg"
-XORG_MIRROR = "http://xorg.freedesktop.org/releases"
-SRC_URI = "${XORG_MIRROR}/individual/app/${PN}-${PV}.tar.bz2"
+require xorg-app-common.inc
 
+DEPENDS = "libxi inputproto"
 RDEPENDS_${PN} += "libxi"
-
-S = "${SRCDIR}/${PN}-${PV}"
-
-inherit autotools pkgconfig
-
-LDFLAGS += "-lXi -lXext -lX11 -ldl"
-
-FILES_${PN} += "  /usr/lib/X11/${PN} /usr/share/X11/app-defaults/"
-
-

@@ -1,4 +1,11 @@
 require xorg-app-common.inc
 
-DEPENDS =+ "libxaw libxt libxft libxrender libxkbfile fontconfig libsm"
-RDEPENDS_${PN} =+ "libxaw libxt libxft libxrender libxkbfile fontconfig libsm"
+DEPENDS =+ """
+	libxaw libxt libxft libxrender 
+	libxkbfile fontconfig libsm libm
+"""
+
+RDEPENDS_${PN} =+ """
+libxaw libxt libxft libxrender
+libxkbfile libsm libm
+"""

@@ -8,5 +8,4 @@ size."
 
 LICENSE= "MIT"
 DEPENDS += "libxrandr"
-
-LDFLAGS += "-lXrandr -lX11 -lxcb -lXext -ldl -lXrender -lm"
+RDEPENDS_${PN} += "libxrandr"

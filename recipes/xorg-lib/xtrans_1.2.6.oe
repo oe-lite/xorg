@@ -7,13 +7,25 @@ Use of this API should allow the addition of new types of transports and \
 support for new platforms without making any changes to the source \
 except in the X Transport Interface code."
 
-require xorg-lib-common.inc
-
 LICENSE = "MIT & MIT-style"
 
+RECIPE_TYPES = "machine native sdk"
+
+require conf/fetch/xorg.conf
+
+inherit autotools pkgconfig gettext
+
+XORG_PN = "${PN}"
+SRC_URI = "${XORG_MIRROR}/individual/lib/${XORG_PN}-${PV}.tar.bz2"
+
+#xtrans provides headers and c code. Thus no libs but lib-ish.
+DEPENDS_${PN}           = "${PN}-dev_${PV}"
+DEPENDS_${PN}-dev       = ""
 RDEPENDS_${PN}-dev = ""
 
-inherit gettext
+S = "${SRCDIR}/${XORG_PN}-${PV}"
 
-RECIPE_TYPES = "machine native sdk"
+
+
+
 

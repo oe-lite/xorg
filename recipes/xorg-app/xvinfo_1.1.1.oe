@@ -6,6 +6,6 @@ DESCRIPTION = "xvinfo prints out the capabilities of any video adaptors \
 associated with the display that are accessible through the X-Video \
 extension."
 
-DEPENDS += " libxv"
+DEPENDS += "libxv"
+RDEPENDS_${PN} += "libxv"
 
-LDFLAGS += "-lXv -lX11 -lxcb -lXext"

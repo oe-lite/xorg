@@ -10,5 +10,5 @@ character metrics, and character bitmaps.
 
 LICENSE = "MIT-X"
 
-DEPENDS += "libfs util-macros fontsproto"
+DEPENDS += "libfs util-macros fontsproto libc"
 RDEPENDS_${PN} += "libfs"

@@ -11,10 +11,10 @@ is not compatible with the core fonts system: usage of Xft requires \
 fairly extensive changes to toolkits (user-interface libraries)."
 
 require xorg-lib-common.inc
-inherit library
 
-DEPENDS += "libx11 libxrender freetype fontconfig"
-RDEPENDS_${PN} += "fontconfig-utils"
+DEPENDS += "libx11 libxrender fontconfig"
+DEPENDS_${PN} += "libx11 libxrender fontconfig"
+RDEPENDS_${PN} += "fontconfig-utils libx11 libxrender"
 
 XORG_PN = "libXft"
 

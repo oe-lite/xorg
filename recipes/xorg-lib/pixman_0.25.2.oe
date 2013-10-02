@@ -9,7 +9,9 @@ require xorg-lib-common.inc
 
 LICENSE = "MIT & MIT-style & PD"
                    
-DEPENDS += "zlib libpng"
+DEPENDS += "zlib libpng libm libgcc libc"
+DEPENDS_${PN} += "${DEPENDS}"
+RDEPENDS_${PN} += "${DEPENDS}"
 
 IWMMXT = "--disable-arm-iwmmxt"
 

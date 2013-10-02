@@ -7,5 +7,5 @@ reflection of the outputs for a screen. It can also set the screen \
 size."
 
 LICENSE= "MIT"
-DEPENDS += "libxrandr"
-RDEPENDS_${PN} += "libxrandr"
+DEPENDS += "libxrandr libm"
+RDEPENDS_${PN} += "libxrandr libm"

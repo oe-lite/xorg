@@ -3,6 +3,7 @@ HOMEPAGE = "http://www.x.org"
 LICENSE = "MIT-X"
 
 require conf/fetch/xorg.conf
+require conf/xorg.conf
 
 # Other packages tend to just care that there is *an* X server:
 PROVIDES_${PN} += "xserver"
@@ -15,112 +16,69 @@ S = "${SRCDIR}/${XORG_PN}-${PV}"
 
 inherit autotools pkgconfig
 
-PROTO_DEPS = "randrproto renderproto fixesproto damageproto xextproto xproto xf86dgaproto xf86miscproto xf86rushproto xf86vidmodeproto xf86bigfontproto compositeproto recordproto resourceproto videoproto scrnsaverproto evieext trapproto xineramaproto fontsproto kbproto inputproto bigreqsproto xcmiscproto glproto"
+PROTO_DEPS = "randrproto renderproto fixesproto damageproto xextproto \
+	   xproto xf86dgaproto xf86miscproto xf86rushproto xf86vidmodeproto \
+	   xf86bigfontproto compositeproto resourceproto videoproto evieext \
+	   trapproto fontsproto kbproto inputproto bigreqsproto xcmiscproto"
 
-LIB_DEPS = "pixman libxfont xtrans libxau libxext libxdmcp libdrm libxkbfile libpciaccess openssl libcrypto libm libfreetype libfontenc libz libdl libc libpthread libx11 librt libdbus libxv"
-DEPENDS = "${PROTO_DEPS} ${LIB_DEPS} font-util util-macros"
+LIB_DEPS = "pixman libxfont libxext libxkbfile libdl libpthread \
+	    libssl libpciaccess"
+
+RECIPE_FLAGS += "dbus_x11"
+LIB_DEPS:>USE_dbus_x11 = " libdbus"
+
+DEPENDS = "${PROTO_DEPS} ${LIB_DEPS} xtrans font-util util-macros"
 DEPENDS_${PN}		= "${PN}-dev_${PV}"
 DEPENDS_${PN}-dev	= ""
+DEPENDS_${PN}[qa] = "allow-missing-lib-depends"
 
 RDEPENDS_${PN} += "xkeyboard-config  xserver-xf86-config"
-RDEPENDS_${PN} += "libcrypto libxfont libfreetype libfontenc \
-            libz libxau pixman libxdmcp libdl libm libc libx11 \
-            libpthread libpciaccess libxkbfile libdrm libxv"
+RDEPENDS_${PN} += "${LIB_DEPS}"
 
-# Split out some modules and extensions from the main package
-# These aren't needed for basic operations and only take up space:
-#  32.0k   libdri.so
-#  336.0k  libglx.so
-#  1360k   libint10.so
-#  180.0k  libwfb.so
-#  320.0k  libxaa.so
-#  124.0k  libxf1bpp.so
-#  84.0k   libxf4bpp.so
-#          librecord.so
-#          libextmod.so
-#          libdbe.so
 
-PACKAGES =+ "${PN}-security-policy \
-             ${PN}-sdl \
-             ${PN}-fbdev \
-             ${PN}-xprint \
-             ${PN}-xvfb \
-             ${PN}-utils \
-             ${PN}-xephyr \
-             ${PN}-multimedia-modules \
-             ${PN}-extension-dri \
-             ${PN}-extension-dri2 \
-             ${PN}-extension-glx \
-             ${PN}-extension-record \
-             ${PN}-extension-extmod \
-             ${PN}-extension-dbe \
-             ${PN}-module-libint10 \
-             ${PN}-module-libafb \
-             ${PN}-module-libwfb  \
-             ${PN}-module-libmfb \
-             ${PN}-module-libcfb \
-             ${PN}-module-xaa \
-             ${PN}-module-libxf1bpp \
-             ${PN}-module-libxf4bpp"
+XSERVER_USE_FLAGS += "dmps=1"
+XSERVER_USE_FLAGS += "screensaver=1"
+XSERVER_USE_FLAGS += "composite=1"
+XSERVER_USE_FLAGS += "xres=1"
+XSERVER_USE_FLAGS += "xf86vidmode=1"
+XSERVER_USE_FLAGS += "xace=1"
+XSERVER_USE_FLAGS += "xvmc=1"
+XSERVER_USE_FLAGS += "sparkle=1"
+XSERVER_USE_FLAGS += "xdmcp=1"
+XSERVER_USE_FLAGS += "xvfb=1"
+XSERVER_USE_FLAGS += "xv=1"
+XSERVER_USE_FLAGS += "xinerama=1"
+XSERVER_USE_FLAGS += "record=1"
+XSERVER_USE_FLAGS += "xnest=1"
+XSERVER_USE_FLAGS += "vbe=1"
+XSERVER_USE_FLAGS += "xaa=1"
+XSERVER_USE_FLAGS += "dbe=1"
+XSERVER_USE_FLAGS += "dga=1"
+XSERVER_USE_FLAGS += "dri=1"
+XSERVER_USE_FLAGS += "dri2=1"
+XSERVER_USE_FLAGS += "int10=1:int10-module"
+XSERVER_USE_FLAGS += "aiglx=1"
+XSERVER_USE_FLAGS += "glx-tls=1"
+XSERVER_USE_FLAGS += "glx=1"
+XSERVER_CONF = ""
 
-RDEPENDS_${PN}-xvfb += "xkeyboard-config"
-RDEPENDS_${PN}-extension-glx += "mesa-dri-swrast"
+DEPENDS:>USE_xserver_screensaver = " scrnsaverproto"
+DEPENDS:>USE_xserver_record      = " recordproto"
+DEPENDS:>USE_xserver_dri         = " glproto xf86driproto dri2proto libgl"
+DEPENDS_${PN}:>USE_xserver_dri   = " glproto xf86driproto dri2proto"
+RDEPENDS_${PN}:>USE_xserver_dri  = " libgl"
+DEPENDS:>USE_xserver_xinerama    = " libxinerama"
+DEPENDS_${PN}:>USE_xserver_xinerama    = " xineramaproto"
+RDEPENDS_${PN}:>USE_xserver_xinerama = " libxinerama"
 
-FILES_${PN} = "${bindir} ${libdir}/X11/Options ${libdir}/X11/Cards ${libdir}/X11/getconfig ${libdir}/X11/etc ${libdir}/modules/*.so ${libdir}/xorg/modules/*.so /etc/X11 ${libdir}/xorg/protocol.txt ${datadir}/X11/xorg.conf.d"
-FILES_${PN}-dev += "${libdir}/xorg/modules/*.la ${libdir}/xorg/modules/*/*.la"
-FILES_${PN}-doc += "${libdir}/X11/doc ${datadir}/X11/xkb/compiled/README.compiled ${localstatedir}/lib/xkb/README.compiled"
-FILES_${PN}-dbg += "${libdir}/xorg/modules/.debug \
-                    ${libdir}/xorg/modules/*/.debug \
-                    ${libdir}/xorg/modules/*/*/.debug \
-                    "
-FILES_${PN}-security-policy += "${libdir}/xserver/SecurityPolicy"
-FILES_${PN}-sdl = "${bindir}/Xsdl"
-FILES_${PN}-fbdev = "${bindir}/Xfbdev"
-FILES_${PN}-xprint = "${libdir}/X11/xserver/*/print"
-FILES_${PN}-xvfb = "${bindir}/Xvfb"
-FILES_${PN}-utils = "${bindir}/scanpci ${bindir}/pcitweak ${bindir}/ioport ${bindir}/in[bwl] ${bindir}/out[bwl] ${bindir}/mmap[rw] ${bindir}/gtf ${bindir}/getconfig ${bindir}/getconfig.pl"
-FILES_${PN}-xephyr = "${bindir}/Xephyr"
-FILES_${PN}-multimedia-modules = "${libdir}/xorg/modules/multimedia/*drv*"
-FILES_${PN}-extension-dri = "${libdir}/xorg/modules/extensions/libdri.so"
-FILES_${PN}-extension-dri2 = "${libdir}/xorg/modules/extensions/libdri2.so"
-FILES_${PN}-extension-glx = "${libdir}/xorg/modules/extensions/libglx.so"
-FILES_${PN}-extension-record = "${libdir}/xorg/modules/extensions/librecord.so"
-FILES_${PN}-extension-extmod = "${libdir}/xorg/modules/extensions/libextmod.so"
-FILES_${PN}-extension-dbe = "${libdir}/xorg/modules/extensions/libdbe.so"
-FILES_${PN}-module-libint10 = "${libdir}/xorg/modules/libint10.so"
-FILES_${PN}-module-libafb = "${libdir}/xorg/modules/libafb.so"
-FILES_${PN}-module-libwfb = "${libdir}/xorg/modules/libwfb.so"
-FILES_${PN}-module-libmfb = "${libdir}/xorg/modules/libmfb.so"
-FILES_${PN}-module-libcfb = "${libdir}/xorg/modules/libcfb.so"
-FILES_${PN}-module-xaa = "${libdir}/xorg/modules/libxaa.so"
-FILES_${PN}-module-libxf1bpp = "${libdir}/xorg/modules/libxf1bpp.so"
-FILES_${PN}-module-libxf4bpp = "${libdir}/xorg/modules/libxf4bpp.so"
-
-#xinerama support
-RECIPE_FLAGS += "x_xinerama"
-DEPENDS:>USE_x_xinerama += " libxinerama"
-XINERAMA_CONF                = "--disable-xinerama"
-XINERAMA_CONF:USE_x_xinerama = "--enable-xinerama"
-RDEPENDS_${PN}:>USE_x_xinerama += " libxinerama"
-
-EXTRA_OECONF += "${XINERAMA_CONF} \
+EXTRA_OECONF += "${XSERVER_CONF} \
 	         --with-fop=no \
                  --disable-static \
-                 --disable-acfb \
-                 --disable-ccfb \
-                 --disable-mcfb \
-                 --disable-xf86misc \
-                 --disable-xorgcfg \
-                 --disable-record \
-                 --disable-dmx \
-                 --disable-xnest \
-                 --disable-xvfb \
-                 --enable-composite \
                  --without-dtrace \
                  --sysconfdir=/etc/X11 \
                  --localstatedir=/var \
-                 --with-fontdir=${datadir}/fonts/X11 \
                  --with-xkb-output=/var/lib/xkb \
+		 --disable-option-checking \
                  ac_cv_file__usr_share_sgml_X11_defs_ent=no \
 "
 
@@ -131,3 +89,79 @@ do_install_append () {
 	# Its assumed base-files creates this for us
 	rmdir ${D}${localstatedir}/log/
 }
+
+inherit auto-package-utils auto-package-libs
+
+SOLIBS = ".so"
+AUTO_PACKAGE_LIBS_PKGPREFIX = "extension-"
+AUTO_PACKAGE_LIBS_DEV_DEPENDS = "libc libm libdl libpixman \
+			      libpciacess librt libdrm"
+AUTO_PACKAGE_LIBS_RDEPENDS = "libc libm libdl libpixman \
+			      libpciacess librt libdrm"
+AUTO_PACKAGE_UTILS_RDEPENDS = "libc libm ${LIB_DEPS}"
+AUTO_PACKAGE_LIBS_LIBDIR += "${libdir}/xorg/modules/extensions \
+			     ${libdir}/xorg/modules"
+
+AUTO_PACKAGE_LIBS = "record composite exa fb fbdevhw int10 \
+		     shadow shadowfb vbe vgahw xaa wfb dga dbe \
+		     dri2 dri extmod glx \
+		     "
+AUTO_PACKAGE_UTILS = "scanpci pcitweak ioport inb inw inl gtf \
+		      outb outw outl mmapr mmapw getconfig getconfig.pl \
+		      cvt Xvfb Xnest\
+		      "
+
+FILES_${PN} = """
+            ${bindir}
+	    ${libdir}/X11/Options
+	    ${libdir}/X11/Cards
+	    ${libdir}/X11/getconfig
+	    ${libdir}/X11/etc
+	    /etc/X11
+	    ${datadir}/X11/xorg.conf.d
+	    """
+
+FILES_${PN}-doc += "${libdir}/X11/doc \
+      	        ${libdir}/xorg/protocol.txt \
+		${datadir}/X11/xkb/compiled/README.compiled \
+		${localstatedir}/lib/xkb/README.compiled"
+FILES_${PN}-dbg += "${libdir}/xorg/modules/.debug \
+                    ${libdir}/xorg/modules/*/.debug \
+                    ${libdir}/xorg/modules/*/*/.debug \
+                    "
+PACKAGES =+ "${PN}-multimedia-modules ${PN}-multimedia-modules-dev"
+FILES_${PN}-multimedia-modules = "${libdir}/xorg/modules/multimedia/*drv*"
+FILES_${PN}-multimedia-modules-dev = "${libdir}/xorg/modules/multimedia/*"
+
+# this is were the magic happens
+addhook xorg_use_flags to post_recipe_parse first before set_useflags
+def xorg_use_flags(d):
+    pn = d.get("PN")
+    for flag in (d.get("XSERVER_USE_FLAGS") or "").split():
+        try:
+            flag, config = flag.split(":",1)
+        except ValueError:
+	    config = None
+        try:
+            flag, default = flag.split("=", 1)
+        except ValueError:
+            default = "0"
+        useflag = "xserver_" + flag.replace("-", "_")
+        d.append("RECIPE_FLAGS", useflag, " ")
+	if config is None:
+	   config = flag
+        if default != "0":
+            d.set("DEFAULT_USE_" + useflag, default)
+        if config != '' and default != "0":
+            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
+                           " --enable-%s"%(config))
+        elif config != '':
+            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
+                           " --disable-%s"%(config))
+        elif default != "0":
+            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
+                           " --enable-%s"%(flag))
+        else:
+            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
+                           " --disable-%s"%(flag))
+	

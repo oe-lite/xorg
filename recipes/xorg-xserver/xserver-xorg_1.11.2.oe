@@ -1,12 +1,8 @@
 require xserver-xorg-common.inc
 
-PROTO_DEPS += "xf86driproto dri2proto glproto"
-LIB_DEPS += "mesa-dri-dev mesa-dri-libglu mesa-dri-libgl "
-
 EXTRA_OECONF += "\
 		 --with-pic \
                  --with-int10=x86emu \
                  --without-xmlto \
 		 "
-
 require xserver-xorg-${PV}.inc

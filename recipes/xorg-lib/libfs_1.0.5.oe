@@ -8,12 +8,9 @@ RECIPE_TYPES = "machine"
 
 require xorg-lib-common.inc
 
-
 LICENSE = "MIT-style"
 
-DEPENDS += " xproto fontsproto xtrans "
-PROVIDES_${PN} =  "fs"
-
+DEPENDS += "xproto fontsproto xtrans"
 
 XORG_PN = "libFS"
 

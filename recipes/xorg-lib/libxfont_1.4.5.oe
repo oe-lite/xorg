@@ -12,8 +12,8 @@ LICENSE= "MIT & MIT-style & BSD"
 
 LIB_DEPENDS = "freetype libfontenc zlib libm"
 DEPENDS += "${LIB_DEPENDS} fontcacheproto xtrans fontsproto xproto "
-DEPENDS_${PN} = "${LIB_DEPENDS}"
-RDEPENDS_${PN} = "${LIB_DEPENDS}"
+DEPENDS_${PN} += "${LIB_DEPENDS}"
+RDEPENDS_${PN} += "${LIB_DEPENDS}"
 XORG_PN = "libXfont"
 
 

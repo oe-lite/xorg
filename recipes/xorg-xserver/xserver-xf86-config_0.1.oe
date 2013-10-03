@@ -7,3 +7,15 @@ do_install() {
 	/usr/bin/install -c -m 644 ${SRCDIR}/xorg.conf ${D}${sysconfdir}/X11/xorg.conf
 }
 
+# the config file run depends on the drivers used in the config file.
+# presently we support the following video and input drivers:
+#xf86-input-evdev //generiv event device driver
+#xf86-input-keyboard
+#xf86-input-mouse
+#xf86-input-mtev //multitouch event driver
+#xf86-video-ati  //video driver for ati video cars
+#xf86-video-fbdev //generic video driver for raw framebuffer
+#xf86-video-imxfb //imx53 video driver on top of framebuffer
+
+#the default/example config is using evdev and fbdev:
+RDEPENDS_${PN} = "xf86-video-fbdev xf86-input-evdev"

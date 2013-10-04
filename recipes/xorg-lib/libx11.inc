@@ -15,7 +15,6 @@ XORG_PN = "libX11"
 LICENSE = "MIT & MIT-style & BSD"
 
 DEPENDS += "util-macros"
-PROVIDES_${PN} = "x11" 
 
 EXTRA_OECONF += "--with-groff=no --with-ps2pdf=no --with-fop=no --disable-specs"
 AUTORECONF_CMD = " \
@@ -27,8 +26,14 @@ AUTORECONF_CMD = " \
 
 PACKAGES =+ "${PN}-xcb"
 
-DEPENDS_${PN} += "kbproto"
+PROVIDES_${PN}-xcb = "libX11-xcb"
+
+DEPENDS_${PN} += "kbproto libc"
 RDEPENDS_${PN} += "libxcb libxau libxdmcp"
+
+DEPENDS_${PN}-xcb += "${PN}"
+RDEPENDS_${PN}-xcb += "${PN}"
+
 FILES_${PN} += "${datadir}/X11/XKeysymDB ${datadir}/X11/XErrorDB ${libdir}/X11/Xcms.txt"
 FILES_${PN}-xcb += "${libdir}/libX11-xcb.so.*"
 FILES_${PN}-locale += "${datadir}/X11/locale ${libdir}/X11/locale"

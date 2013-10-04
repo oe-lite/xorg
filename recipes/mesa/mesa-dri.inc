@@ -15,3 +15,8 @@ DEPENDS_${PN} += "libxdamage libxxf86vm"
 EXTRA_OECONF += "--with-driver=dri --without-gallium-drivers --with-dri-drivers=${DRIDRIVERS} --with-egl-platforms=x11"
 
 FILES_${PN}-dbg += "${libdir}/dri/.debug/*"
+
+DEPENDS_${PN}-libGL += "${PN}-swrast"
+DEPENDS_${PN}-libEGL += "${PN}-swrast"
+RDEPENDS_${PN}-libGL += "${PN}-swrast"
+RDEPENDS_${PN}-libEGL += "${PN}-swrast"

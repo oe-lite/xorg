@@ -14,6 +14,7 @@ PROTO_DEPS = "xf86driproto glproto"
 LIB_DEPS = "libx11 libxext libxxf86vm libxdamage libxfixes native:libxml2"
 
 DEPENDS = "native:makedepend native:python-runtime ${PROTO_DEPS} ${LIB_DEPS}"
+DEPENDS_${PN}-dev += "xf86driproto glproto"
 
 inherit autotools-autoreconf pkgconfig auto-package-libs c make c++
 
@@ -23,8 +24,11 @@ EXTRA_OECONF = "--enable-glu \
 		--enable-glx-tls\
 		"
 FILES_${PN}-libegl-dev += "${includedir}/EGL \
-		           ${includedir}/KHR \
 		       	   ${libdir}/pkgconfig/egl.pc "
 
+FILES_${PN}-libgl-dev += "${includedir}/GL \
+                          ${libdir}/pkgconfig/gl.pc "
+
 AUTO_PACKAGE_LIBS = "EGL GL GLU OSMesa"
+AUTO_PACKAGE_LIBS_DEV_DEPENDS = "${PN}-dev ${COMMON_RDEPENDS}"
 AUTO_PACKAGE_LIBS_RDEPENDS = "${COMMON_RDEPENDS}"

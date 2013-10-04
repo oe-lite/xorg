@@ -7,6 +7,8 @@ require conf/fetch/xorg.conf
 
 DEPENDS = "xserver-xorg xproto randrproto util-macros"
 SRC_URI = "${XORG_MIRROR}/individual/driver/${PN}-${PV}.tar.bz2"
+DEPENDS_${PN} += "libc"
+RDEPENDS_${PN} += "libc"
 
 S = "${SRCDIR}/${PN}-${PV}"
 
@@ -35,3 +37,6 @@ do_install[postfuncs] += "do_install_input"
 do_install_input() {
 	find ${D}${libdir}/xorg/modules -regex ".*\.la$" | xargs rm -f --
 }
+
+require conf/xorg.conf
+SOLIBS = "*.so"

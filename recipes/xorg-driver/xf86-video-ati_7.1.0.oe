@@ -2,14 +2,14 @@ DESCRIPTION = "X.Org X server -- Radeon ATI display driver"
 
 require xorg-driver-video.inc
 
-DEPENDS += "libdrm libdrm-drivers kbproto xf86driproto"
-RDEPENDS_${PN} = """
+DEPENDS += "libdrm-radeon kbproto xf86driproto"
+LIBS_DEPS = """
 	xserver-xorg-extension-dri
 	xserver-xorg-extension-dri2
 	xserver-xorg-extension-dbe
 	xserver-xorg-extension-glx
 	xserver-xorg-extension-extmod
-	libdrm
-	libdrm-drivers
+	libdrm-radeon
 """
-
+DEPENDS_${PN} += "${LIBS_DEPS}"
+RDEPENDS_${PN} += "${LIBS_DEPS}"

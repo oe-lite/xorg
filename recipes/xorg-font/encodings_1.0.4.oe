@@ -11,6 +11,7 @@ RECIPE_TYPES = "native machine"
 LICENSE = "PD"
 
 DEPENDS = "native:mkfontscale native:font-util"
+RDEPENDS_${PN} = ""
 
 SRC_URI += "file://nocompiler.patch"
 

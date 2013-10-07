@@ -22,7 +22,7 @@ PROTO_DEPS = "randrproto renderproto fixesproto damageproto xextproto \
 	   trapproto fontsproto kbproto inputproto bigreqsproto xcmiscproto"
 
 LIB_DEPS = "pixman libxfont libxext libxkbfile libdl libpthread \
-	    libssl libpciaccess"
+	    libssl libpciaccess libcrypto"
 
 RECIPE_FLAGS += "dbus_x11"
 LIB_DEPS:>USE_dbus_x11 = " libdbus"

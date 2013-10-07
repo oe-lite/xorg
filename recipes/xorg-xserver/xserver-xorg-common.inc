@@ -66,10 +66,17 @@ DEPENDS:>USE_xserver_screensaver = " scrnsaverproto"
 DEPENDS:>USE_xserver_record      = " recordproto"
 DEPENDS:>USE_xserver_dri         = " glproto xf86driproto dri2proto libgl"
 DEPENDS_${PN}:>USE_xserver_dri   = " glproto xf86driproto dri2proto"
-RDEPENDS_${PN}:>USE_xserver_dri  = " libgl"
+RDEPENDS_${PN}:>USE_xserver_dri  = " libgl ${PN}-extension-dri mesa-dri"
+RDEPENDS_${PN}:>USE_xserver_dri2  = " ${PN}-extension-dri2"
+RDEPENDS_${PN}:>USE_xserver_glx  = " ${PN}-extension-glx"
+RDEPENDS_${PN}:>USE_xserver_record  = " ${PN}-extension-record"
+RDEPENDS_${PN}:>USE_xserver_dbe  = " ${PN}-extension-dbe"
+RDEPENDS_${PN}:>USE_xserver_dga  = " ${PN}-extension-dga"
 DEPENDS:>USE_xserver_xinerama    = " libxinerama"
 DEPENDS_${PN}:>USE_xserver_xinerama    = " xineramaproto"
 RDEPENDS_${PN}:>USE_xserver_xinerama = " libxinerama"
+
+RDEPENDS_${PN} += " ${PN}-extension-extmod"
 
 EXTRA_OECONF += "${XSERVER_CONF} \
 	         --with-fop=no \
@@ -95,9 +102,9 @@ inherit auto-package-utils auto-package-libs
 SOLIBS = ".so"
 AUTO_PACKAGE_LIBS_PKGPREFIX = "extension-"
 AUTO_PACKAGE_LIBS_DEV_DEPENDS = "libc libm libdl libpixman \
-			      libpciacess librt libdrm"
+			      libpciaccess librt libdrm"
 AUTO_PACKAGE_LIBS_RDEPENDS = "libc libm libdl libpixman \
-			      libpciacess librt libdrm"
+			      libpciaccess librt libdrm"
 AUTO_PACKAGE_UTILS_RDEPENDS = "libc libm ${LIB_DEPS}"
 AUTO_PACKAGE_LIBS_LIBDIR += "${libdir}/xorg/modules/extensions \
 			     ${libdir}/xorg/modules"

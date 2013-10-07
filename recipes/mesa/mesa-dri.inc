@@ -7,16 +7,12 @@ DEFAULT_PREFERENCE = "-1"
 
 DRIDRIVERS = "swrast"
 PACKAGES =+ "${PN}-swrast ${PN}-swrast-dbg"
-FILES_${PN}-swrast = "${libdir}/dri/swrast*"
-FILES_${PN}-swrast-dbg = "${libdir}/dri/.debug/swrast*"
-RDEPENDS_${PN}-swrast += "libexpat ${COMMON_RDEPENDS}"
-DEPENDS_${PN} += "libxdamage libxxf86vm"
+FILES_${PN} += "${libdir}/dri/swrast*"
+FILES_${PN}-dbg += "${libdir}/dri/.debug/swrast*"
+RDEPENDS_${PN} += "${LIB_DEPS} ${COMMON_RDEPENDS}"
+DEPENDS_${PN} += "${LIB_DEPS} ${COMMON_RDEPENDS}"
 
 EXTRA_OECONF += "--with-driver=dri --without-gallium-drivers --with-dri-drivers=${DRIDRIVERS} --with-egl-platforms=x11"
 
 FILES_${PN}-dbg += "${libdir}/dri/.debug/*"
 
-DEPENDS_${PN}-libGL += "${PN}-swrast"
-DEPENDS_${PN}-libEGL += "${PN}-swrast"
-RDEPENDS_${PN}-libGL += "${PN}-swrast"
-RDEPENDS_${PN}-libEGL += "${PN}-swrast"

@@ -11,9 +11,9 @@ BUGTRACKER = "https://bugs.freedesktop.org"
 LICENSE = "MIT"
 
 PROTO_DEPS = "xf86driproto glproto"
-LIB_DEPS = "libx11 libxext libxxf86vm libxdamage libxfixes native:libxml2"
+LIB_DEPS = "libx11 libxext libxxf86vm libxdamage libxfixes"
 
-DEPENDS = "native:makedepend native:python-runtime ${PROTO_DEPS} ${LIB_DEPS}"
+DEPENDS = "native:makedepend native:python-runtime native:libxml2 ${PROTO_DEPS} ${LIB_DEPS}"
 DEPENDS_${PN}-dev += "xf86driproto glproto"
 
 inherit autotools-autoreconf pkgconfig auto-package-libs c make c++
@@ -30,5 +30,5 @@ FILES_${PN}-libgl-dev += "${includedir}/GL \
                           ${libdir}/pkgconfig/gl.pc "
 
 AUTO_PACKAGE_LIBS = "EGL GL GLU OSMesa"
-AUTO_PACKAGE_LIBS_DEV_DEPENDS = "${PN}-dev ${COMMON_RDEPENDS}"
-AUTO_PACKAGE_LIBS_RDEPENDS = "${COMMON_RDEPENDS}"
+AUTO_PACKAGE_LIBS_DEV_DEPENDS = "${PN}-dev ${COMMON_RDEPENDS} libxxf86vm libxdamage libxfixes"
+AUTO_PACKAGE_LIBS_RDEPENDS = "${COMMON_RDEPENDS} libxxf86vm libxdamage libxfixes"

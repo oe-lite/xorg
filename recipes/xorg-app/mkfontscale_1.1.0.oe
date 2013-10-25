@@ -12,6 +12,7 @@ RECIPE_TYPES = "machine native"
 
 LIB_DEPENDS = "zlib freetype libx11 libfontenc"
 DEPENDS += "${LIB_DEPENDS}"
+DEPENDS_${PN} += "${LIB_DEPENDS}"
 RDEPENDS_${PN} += "${LIB_DEPENDS}"
 
 

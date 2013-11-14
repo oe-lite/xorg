@@ -11,7 +11,7 @@ BUGTRACKER = "https://bugs.freedesktop.org"
 LICENSE = "MIT"
 
 PROTO_DEPS = "xf86driproto glproto"
-LIB_DEPS = "libx11 libxext libxxf86vm libxdamage libxfixes"
+LIB_DEPS = "libx11 libxext libxxf86vm libxdamage libxfixes libxi libxmu"
 
 DEPENDS = "native:makedepend native:python-runtime native:libxml2 ${PROTO_DEPS} ${LIB_DEPS}"
 DEPENDS_${PN}-dev += "xf86driproto glproto"
@@ -20,7 +20,7 @@ inherit autotools-autoreconf pkgconfig auto-package-libs c make c++
 
 EXTRA_OECONF = "--enable-glu \
                 --disable-glw \
-                --disable-glut \
+                --enable-glut \
 		--enable-glx-tls\
 		"
 FILES_${PN}-libegl-dev += "${includedir}/EGL \
@@ -29,6 +29,12 @@ FILES_${PN}-libegl-dev += "${includedir}/EGL \
 FILES_${PN}-libgl-dev += "${includedir}/GL \
                           ${libdir}/pkgconfig/gl.pc "
 
-AUTO_PACKAGE_LIBS = "EGL GL GLU OSMesa"
+FILES_${PN}-libglu-dev += "${includedir}/GL/glu* \
+                          ${libdir}/pkgconfig/glu.pc "
+
+FILES_${PN}-libglut-dev += "${includedir}/GL/glut* \
+                          ${libdir}/pkgconfig/glut.pc "
+
+AUTO_PACKAGE_LIBS = "EGL GLUT GLU GL OSMesa"
 AUTO_PACKAGE_LIBS_DEV_DEPENDS = "${PN}-dev ${COMMON_RDEPENDS} libxxf86vm libxdamage libxfixes"
 AUTO_PACKAGE_LIBS_RDEPENDS = "${COMMON_RDEPENDS} libxxf86vm libxdamage libxfixes"

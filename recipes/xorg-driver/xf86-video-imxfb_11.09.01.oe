@@ -32,4 +32,13 @@ do_compile_fix_includes () {
 	find ${S} -name 'config.h'| xargs sed 's|#include \"\(.*\)\"|#include \<\1\>|' -i
 }
 
-FILES-dev = "${libdir}/xorg/modules/drivers/*.la"
+FILES_${PN}-dev += "${libdir}/xorg/modules/drivers/*.la"
+FILES_${PN}-dev += "${includedir}/X11/extensions/imx_ext.h"
+
+
+RDEPENDS_${PN} += """
+xserver-xorg-extension-exa
+xserver-xorg-extension-fbdevhw
+xserver-xorg-extension-fb
+"""
+

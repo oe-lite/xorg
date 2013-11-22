@@ -17,7 +17,7 @@ S = "${SRCDIR}/${XORG_PN}-${PV}"
 inherit autotools pkgconfig
 
 PROTO_DEPS = "randrproto renderproto fixesproto damageproto xextproto \
-	   xproto xf86dgaproto xf86miscproto xf86rushproto xf86vidmodeproto \
+	   xproto xf86miscproto xf86rushproto \
 	   xf86bigfontproto compositeproto resourceproto videoproto evieext \
 	   trapproto fontsproto kbproto inputproto bigreqsproto xcmiscproto"
 
@@ -62,9 +62,11 @@ XSERVER_USE_FLAGS += "glx-tls=1"
 XSERVER_USE_FLAGS += "glx=1"
 XSERVER_CONF = ""
 
+DEPENDS:>USE_xserver_xf86vidmode = " xf86vidmodeproto"
 DEPENDS:>USE_xserver_screensaver = " scrnsaverproto"
 DEPENDS:>USE_xserver_record      = " recordproto"
 DEPENDS:>USE_xserver_dri         = " glproto xf86driproto dri2proto libgl"
+DEPENDS:>USE_xserver_dga         = " xf86dgaproto"
 DEPENDS_${PN}:>USE_xserver_dri   = " glproto xf86driproto dri2proto"
 RDEPENDS_${PN}:>USE_xserver_dri  = " libgl ${PN}-extension-dri mesa-dri"
 RDEPENDS_${PN}:>USE_xserver_dri2  = " ${PN}-extension-dri2"
@@ -160,15 +162,12 @@ def xorg_use_flags(d):
         if default != "0":
             d.set("DEFAULT_USE_" + useflag, default)
         if config != '' and default != "0":
-            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
+            d.set("XSERVER_CONF_" + flag , "--disable-" + config)
+            d.set_override("XSERVER_CONF_%s"%(flag), ("", "USE_" + useflag),
                            " --enable-%s"%(config))
-        elif config != '':
-            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
-                           " --disable-%s"%(config))
         elif default != "0":
-            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
+            d.set("XSERVER_CONF_" + flag , "--disable-" + flag)
+            d.set_override("XSERVER_CONF_%s"%(flag), ("", "USE_" + useflag),
                            " --enable-%s"%(flag))
-        else:
-            d.set_override("XSERVER_CONF", (">", "USE_" + useflag),
-                           " --disable-%s"%(flag))
 	
+        d.append("XSERVER_CONF", " ${" + "XSERVER_CONF_" + flag + "} ")

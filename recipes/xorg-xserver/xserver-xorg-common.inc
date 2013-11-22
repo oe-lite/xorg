@@ -60,6 +60,7 @@ XSERVER_USE_FLAGS += "int10=1:int10-module"
 XSERVER_USE_FLAGS += "aiglx=1"
 XSERVER_USE_FLAGS += "glx-tls=1"
 XSERVER_USE_FLAGS += "glx=1"
+XSERVER_USE_FLAGS += "libdrm=1"
 XSERVER_CONF = ""
 
 DEPENDS:>USE_xserver_xf86vidmode = " xf86vidmodeproto"
@@ -77,6 +78,8 @@ RDEPENDS_${PN}:>USE_xserver_dga  = " ${PN}-extension-dga"
 DEPENDS:>USE_xserver_xinerama    = " libxinerama"
 DEPENDS_${PN}:>USE_xserver_xinerama    = " xineramaproto"
 RDEPENDS_${PN}:>USE_xserver_xinerama = " libxinerama"
+RDEPENDS_${PN}:>USE_xserver_libdrm      = " libdrm "
+AUTO_PACKAGE_LIBS_DEV_DEPENDS:>USE_xserver_libdrm = " libdrm "
 
 RDEPENDS_${PN} += " ${PN}-extension-extmod"
 
@@ -104,9 +107,9 @@ inherit auto-package-utils auto-package-libs
 SOLIBS = ".so"
 AUTO_PACKAGE_LIBS_PKGPREFIX = "extension-"
 AUTO_PACKAGE_LIBS_DEV_DEPENDS = "libc libm libdl libpixman \
-			      libpciaccess librt libdrm"
+			      libpciaccess librt"
 AUTO_PACKAGE_LIBS_RDEPENDS = "libc libm libdl libpixman \
-			      libpciaccess librt libdrm"
+			      libpciaccess librt"
 AUTO_PACKAGE_UTILS_RDEPENDS = "libc libm ${LIB_DEPS}"
 AUTO_PACKAGE_LIBS_LIBDIR += "${libdir}/xorg/modules/extensions \
 			     ${libdir}/xorg/modules"

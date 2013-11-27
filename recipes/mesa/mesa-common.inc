@@ -38,3 +38,6 @@ FILES_${PN}-libglut-dev += "${includedir}/GL/glut* \
 AUTO_PACKAGE_LIBS = "EGL GLUT GLU GL OSMesa"
 AUTO_PACKAGE_LIBS_DEV_DEPENDS = "${PN}-dev ${COMMON_RDEPENDS} libxxf86vm libxdamage libxfixes"
 AUTO_PACKAGE_LIBS_RDEPENDS = "${COMMON_RDEPENDS} libxxf86vm libxdamage libxfixes"
+
+DEPENDS-${PN}-libgl += "${PN}-libglu"
+RDEPENDS-${PN}-libgl += "${PN}-libglu"

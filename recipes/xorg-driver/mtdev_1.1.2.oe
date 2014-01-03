@@ -5,9 +5,9 @@ inherit autotools pkgconfig library
 
 PACKAGES += "${PN}-test" 
 
-DEPENDS = "libc libgcc"
-DEPENDS_${PN} = "libc libgcc"
-RDEPENDS_${PN} = "libc libgcc"
+DEPENDS += "libc libgcc"
+DEPENDS_${PN} += "libc libgcc"
+RDEPENDS_${PN} += "libc libgcc"
 
 DEPENDS_${PN}-test = "${PN}"
 RDEPENDS_${PN}-test = "${PN}"

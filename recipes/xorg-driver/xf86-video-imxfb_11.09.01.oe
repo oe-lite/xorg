@@ -9,8 +9,12 @@ RDEPENDS_${PN} = "amd-gpu-x11-bin-mx51 libz160"
 
 inherit autotools pkgconfig
 SRC_URI = "file://xserver-xorg-video-imx-${PV}.tar.gz \
-           file://xf86-video-imxfb-fix-m4-hardcodded-paths.patch \
 	   file://mfloat-toolchain-decides.patch \
+           file://xf86-video-imxfb-fix-m4-hardcodded-paths.patch \
+           file://Make-video-API-forward-and-backward-compatible.patch \
+           file://ext-Update-to-newer-swap-macros.patch \
+           file://Fix-error-unknown-type-name-uint.patch \
+           file://xserver-1.14-compat.patch \
 	   "
 RECIPE_FLAGS = "xorg_video_imx_xvideo_enable"
 DEFAULT_USE_xorg_video_imx_xvideo_enable = "0"

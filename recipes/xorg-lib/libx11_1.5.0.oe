@@ -1,0 +1,21 @@
+require libx11.inc
+inherit gettext
+
+RECIPE_TYPES = "sdk machine native"
+
+EXTRA_OECONF += "--with-keysymdefdir=${HOST_SYSROOT}${includedir}/X11"
+EXTRA_OEMAKE += 'CWARNFLAGS=""'
+
+#removed xtrans - removed xslt support elsewhere too
+DEPENDS += "xtrans util-macros libxdmcp libxau \
+            bigreqsproto xproto xextproto xcmiscproto \
+            xf86bigfontproto kbproto inputproto libxcb"
+DEPENDS_${PN} += "xproto libxcb libxau libxdmcp libdl"
+# "libxau libxdmcp"
+RDEPENDS_${PN} +=  "libxcb libxau libxdmcp libdl libc"
+
+SRC_URI += " file://keysymdef_include.patch \
+             file://pkgconfig.patch     \
+           "
+
+

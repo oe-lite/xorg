@@ -14,7 +14,7 @@ SRC_URI += "file://macro_tweak.patch"
 
 S = "${SRCDIR}/${XORG_PN}-${PV}"
 
-inherit autotools pkgconfig
+inherit autotools-autoreconf pkgconfig
 
 PROTO_DEPS = "randrproto renderproto fixesproto damageproto xextproto \
 	   xproto xf86miscproto xf86rushproto \

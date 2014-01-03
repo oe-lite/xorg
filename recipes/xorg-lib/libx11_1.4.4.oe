@@ -20,4 +20,29 @@ SRC_URI += " file://keysymdef_include.patch \
              file://pkgconfig.patch \
              "
 
+do_compile[prefuncs] += "do_compile_makekeys"
+do_compile_makekeys() {
+	cd ${S}/src/util
+	mv makekeys.c.orig makekeys.c || true
+	touch makekeys-makekeys.o
+	(
+		unset CC LD CXX CCLD CFLAGS CPPFLAGS LDFLAGS CXXFLAGS
+		# MIN_REHASH 10 is only in 1.0.1
+		sed -i -e 's:MIN_REHASH 10:MIN_REHASH 16:g' makekeys.c
+		sed -i -e 's:MIN_REHASH 15:MIN_REHASH 16:g' makekeys.c
+		touch makekeys-makekeys.o;
+		if [ "${BUILD_WORDSIZE}" == "64" ]; then
+			${BUILD_CC} ${BUILD_CFLAGS} -I${HOST_SYSROOT}${includedir} makekeys.c -o makekeys
+		else
+			${BUILD_CC} ${BUILD_CFLAGS} -I${HOST_SYSROOT}${includedir} -DUSE32 makekeys.c -o makekeys
+		fi
+	)
+	if [ "$?" != "0" ]; then
+		exit 1
+	fi
+	# mv to stop it getting rebuilt
+	mv makekeys.c makekeys.c.orig
+	cd ../../
+}
+
 

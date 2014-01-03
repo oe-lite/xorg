@@ -1,8 +1,0 @@
-require xserver-xorg-common.inc
-
-EXTRA_OECONF += "\
-		 --with-pic \
-                 --with-int10=x86emu \
-                 --without-xmlto \
-		 "
-require xserver-xorg-${PV}.inc

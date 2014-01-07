@@ -1,3 +1,10 @@
 require xserver-xorg-common.inc
 
 require xserver-xorg.inc
+
+do_install[postfuncs] = "do_install_headers"
+
+do_install_headers() {
+  cd ${S}
+  install -m 775 hw/xfree86/common/dgaproc.h ${D}${includedir}/xorg/.
+}

@@ -19,4 +19,23 @@ SRC_URI += " file://keysymdef_include.patch \
 	     file://fix-cross-compile-include-path.patch \
            "
 
+# handle makekeys ro be run on build host
+PACKAGES =+ "${PN}-makekeys"
 
+DO_INSTALL_NATIVE = ""
+DO_INSTALL_NATIVE:native = "do_install_native"
+
+do_install[postfuncs] = "${DO_INSTALL_NATIVE}"
+
+do_install_native(){
+  mkdir -p ${D}${bindir}
+  install -m 775 ${S}/src/util/makekeys ${D}${bindir}/makekeys
+}
+
+FILES_${PN}-makekeys = "${bindir}/makekeys"
+
+DEPENDS:>machine = " native:libx11-makekeys"
+
+inherit autotools-autoreconf
+SRC_URI:>machine = " file://use_native_makekeys.patch"
+export MAKEKEYS="${BUILD_SYSROOT}/bin/makekeys"

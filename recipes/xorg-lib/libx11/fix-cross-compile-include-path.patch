@@ -1,0 +1,14 @@
+--- libX11-1.5.0/src/util/Makefile.am	2012-06-02 08:37:19.000000000 +0200
++++ libX11-1.5.0-patched/src/util/Makefile.am	2014-01-14 11:17:50.350648355 +0100
+@@ -8,11 +8,6 @@
+ makekeys_CPPFLAGS = \
+ 	-I$(top_srcdir)/include
+ 
+-CC = @CC_FOR_BUILD@
+-CPPFLAGS = @CPPFLAGS_FOR_BUILD@
+-CFLAGS = @CFLAGS_FOR_BUILD@
+-LDFLAGS = @LDFLAGS_FOR_BUILD@
+-
+ EXTRA_DIST = mkks.sh
+ 
+ if LINT

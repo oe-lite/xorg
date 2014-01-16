@@ -16,3 +16,11 @@ SRC_URI += "file://compile_without_udev.patch"
 
 DEPENDS += "mtdev-dev mtdev"
 RDEPENDS_${PN} += "mtdev"
+
+AUTORECONF_CMD = " \
+   ${LIBTOOLIZE} --force --automake --copy \
+&& aclocal $acpaths --force \
+&& autoconf $acpaths --force \
+&& automake -a --copy --force; \
+"
+

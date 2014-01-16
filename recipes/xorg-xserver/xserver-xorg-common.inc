@@ -16,6 +16,14 @@ S = "${SRCDIR}/${XORG_PN}-${PV}"
 
 inherit autotools-autoreconf pkgconfig
 
+AUTORECONF_CMD = " \
+   ${LIBTOOLIZE} --force --automake --copy \
+&& aclocal $acpaths --force \
+&& autoconf $acpaths --force \
+&& automake -a --copy --force; \
+"
+
+
 PROTO_DEPS = "randrproto renderproto fixesproto damageproto xextproto \
 	   xproto xf86miscproto xf86rushproto \
 	   xf86bigfontproto compositeproto resourceproto videoproto evieext \

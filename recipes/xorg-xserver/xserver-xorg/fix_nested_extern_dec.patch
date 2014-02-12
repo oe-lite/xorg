@@ -1,0 +1,10 @@
+--- xorg-server-1.14.0/dix/window.c.orig	2014-02-06 13:36:42.090942681 +0100
++++ xorg-server-1.14.0/dix/window.c	2014-02-06 13:37:06.538942327 +0100
+@@ -126,6 +126,7 @@
+ #ifdef COMPOSITE
+ #include "compint.h"
+ #endif
++#include "selection.h"
+ 
+ #include "privates.h"
+ #include "xace.h"

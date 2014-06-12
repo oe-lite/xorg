@@ -6,7 +6,7 @@ LICENSE = "GPLv3+"
 DEPENDS = "makedepend"
 RECIPE_TYPES = "native"
 
-SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/${PV}/MesaLib-${PV}.tar.bz2"
+SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/older-versions/7.x/${PV}/MesaLib-${PV}.tar.bz2"
 S = "${SRCDIR}/Mesa-${PV}/src/glsl/"
 
 inherit make c c++

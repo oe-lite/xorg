@@ -1,7 +1,7 @@
 DEPENDS += "native:mesa-dri-glsl"
 
 
-SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/${PV}/MesaLib-${PV}.tar.bz2 \
+SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/older-versions/7.x/${PV}/MesaLib-${PV}.tar.bz2 \
            file://uclibc.patch \
            file://crossfix.patch \
            file://crossfix-mklib.patch \

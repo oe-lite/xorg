@@ -11,7 +11,7 @@ BUGTRACKER = "https://bugs.freedesktop.org"
 LICENSE = "MIT"
 
 PROTO_DEPS = "xf86driproto glproto"
-LIB_DEPS = "libx11 libxext"
+LIB_DEPS = "libx11 libxext libxmu libxi"
 
 DEPENDS = "native:makedepend native:python-runtime native:libxml2 ${PROTO_DEPS} ${LIB_DEPS}  libxxf86vm libxdamage libxfixes"
 DEPENDS_${PN}-dev += "xf86driproto glproto"

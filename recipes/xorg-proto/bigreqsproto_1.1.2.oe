@@ -1,0 +1,10 @@
+require xorg-proto-common.inc
+
+
+SUMMARY = "BigReqs: X Big Requests extension headers"
+DESCRIPTION = "This package provides the wire protocol for the \
+BIG-REQUESTS extension, used to send larger requests that usual in order \
+to avoid fragmentation."
+
+RECIPE_TYPES = "native sdk machine"
+

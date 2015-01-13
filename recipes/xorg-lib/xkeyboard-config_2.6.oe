@@ -1,0 +1,29 @@
+SUMMARY = "Keyboard configuration database for X Window"
+
+DESCRIPTION = "The non-arch keyboard configuration database for X \
+Window.  The goal is to provide the consistent, well-structured, \
+frequently released open source of X keyboard configuration data for X \
+Window System implementations.  The project is targeted to XKB-based \
+systems."
+
+HOMEPAGE = "http://freedesktop.org/wiki/Software/XKeyboardConfig"
+
+LICENSE = "MIT & MIT-style"
+
+SRC_URI = "https://www.x.org/releases/individual/data/${PN}/${PN}-${PV}.tar.bz2"
+
+DEPENDS = " native:xkbcomp glib libxkbfile"
+
+
+EXTRA_OECONF = "--with-xkb-rules-symlink=xorg"
+
+RDEPENDS_${PN} += "xkbcomp"
+FILES_${PN} += "${datadir}/X11/xkb"
+
+inherit autotools pkgconfig
+
+do_install[postfuncs] += "do_install_xbk-config"
+do_install_xkb-config () {
+    install -d ${D}/usr/share/X11/xkb/compiled
+    cd ${D}${datadir}/X11/xkb/rules && ln -sf base xorg
+}

@@ -1,0 +1,1 @@
+695d2f2824884d9e54aa1419282ae167fdea163b  xkbcomp-1.2.4.tar.bz2

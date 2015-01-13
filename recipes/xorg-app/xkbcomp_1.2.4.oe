@@ -1,0 +1,16 @@
+require xorg-app-common.inc
+
+SUMMARY = "A program to compile XKB keyboard description"
+
+DESCRIPTION = "The xkbcomp keymap compiler converts a description of an \
+XKB keymap into one of several output formats. The most common use for \
+xkbcomp is to create a compiled keymap file (.xkm extension) which can \
+be read directly by XKB-capable X servers or utilities."
+
+DEPENDS += "libxkbfile util-macros libx11 kbproto libxcb libxau libxdmcp libdl"
+DEPENDS_${PN} += "libx11 libxkbfile"
+RDEPENDS_${PN} += "libx11 libxkbfile"
+
+
+RECIPE_TYPES = "native machine"
+

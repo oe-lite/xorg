@@ -1,4 +1,0 @@
-include xcb-proto.inc
-
-LICENSE = "MIT"
-

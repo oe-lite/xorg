@@ -1,0 +1,1 @@
+82a568559235fc6e26d0a38911c5ea18f8e8455c  xcb-proto-1.7.1.tar.bz2

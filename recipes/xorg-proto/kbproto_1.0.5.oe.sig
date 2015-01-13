@@ -1,1 +1,0 @@
-d95fada09399568c434729b436e1a09503e15b7a  kbproto-1.0.5.tar.bz2

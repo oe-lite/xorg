@@ -5,8 +5,7 @@ SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/older-versions/7.x/${PV}/MesaLib-$
            file://uclibc.patch \
            file://crossfix.patch \
            file://crossfix-mklib.patch \
-           file://mesa_fix_for_x32.patch \
-           "
+           file://32bittest.patch"
 S = "${SRCDIR}/Mesa-${PV}"
 
 do_autoreconf[prefuncs] += "do_autoreconf_fixup"

@@ -10,7 +10,7 @@ HOMEPAGE = "http://freedesktop.org/wiki/Software/XKeyboardConfig"
 
 LICENSE = "MIT & MIT-style"
 
-SRC_URI = "http://people.freedesktop.org/~svu/xkeyboard-config-${PV}.tar.bz2"
+SRC_URI = "http://www.x.org/releases/individual/data/xkeyboard-config/${PN}-${PV}.tar.bz2"
 
 DEPENDS = " native:xkbcomp glib libxkbfile"
 

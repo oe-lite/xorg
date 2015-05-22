@@ -1,1 +1,1 @@
-63438dcda6253ce25d3010e7c460ef1369a53368  xkeyboard-config-2.1.tar.bz2
+4e96e0704b2a17b291f98b2240611390e7a99f9e  xkeyboard-config-2.1.tar.bz2

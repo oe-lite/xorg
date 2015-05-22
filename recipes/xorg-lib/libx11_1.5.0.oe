@@ -16,7 +16,8 @@ RDEPENDS_${PN} +=  "libxcb libxau libxdmcp libdl libc"
 
 SRC_URI += " file://keysymdef_include.patch \
              file://pkgconfig.patch     \
-	     file://fix-cross-compile-include-path.patch \
+             file://fix-cross-compile-include-path.patch \
+             file://nls_makefile.patch \
            "
 
 # handle makekeys ro be run on build host

@@ -1,0 +1,12 @@
+diff -urN a/nls/Makefile.am b/nls/Makefile.am
+--- a/nls/Makefile.am	2012-06-02 08:37:18.000000000 +0200
++++ b/nls/Makefile.am	2015-04-30 12:18:36.638612068 +0200
+@@ -38,7 +38,7 @@
+ 
+ if HAVE_PERL
+ TESTS_ENVIRONMENT = $(PERL)
+-TESTS = $(srcdir)/compose-check.pl
++TESTS = compose-check.pl
+ endif HAVE_PERL
+ 
+ 

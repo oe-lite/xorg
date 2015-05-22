@@ -12,7 +12,7 @@ LICENSE = "MIT & MIT-style"
 
 SRC_URI = "http://www.x.org/releases/individual/data/xkeyboard-config/${PN}-${PV}.tar.bz2"
 
-DEPENDS = " native:xkbcomp glib libxkbfile"
+DEPENDS = " native:xkbcomp native:intltool glib libxkbfile"
 
 
 EXTRA_OECONF = "--with-xkb-rules-symlink=xorg"

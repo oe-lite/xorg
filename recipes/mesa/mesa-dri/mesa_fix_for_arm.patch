@@ -1,0 +1,23 @@
+diff -urN a/bin/mklib b/bin/mklib
+--- a/bin/mklib	2011-07-09 03:37:09.000000000 +0200
++++ b/bin/mklib	2015-05-14 10:48:47.261622841 +0200
+@@ -334,9 +334,6 @@
+ 	    # environment.  If so, pass -m32 flag to linker.
+ 	    set ${OBJECTS}
+ 	    ABI32=`file $1 | grep 32-bit`
+-	    if [ "${ABI32}" -a `uname -m` = "x86_64" ] ; then
+-		OPTS="-m32 ${OPTS}"
+-	    fi
+ 
+             if [ "${ALTOPTS}" ] ; then
+                 OPTS=${ALTOPTS}
+@@ -391,9 +388,6 @@
+ 	    # environment.  If so, pass -m32 flag to linker.
+ 	    set ${OBJECTS}
+ 	    ABI32=`file $1 | grep 32-bit`
+-	    if [ "${ABI32}" -a `uname -m` = "x86_64" ] ; then
+-		OPTS="-m32 ${OPTS}"
+-	    fi
+             if [ "${ALTOPTS}" ] ; then
+                 OPTS=${ALTOPTS}
+             fi

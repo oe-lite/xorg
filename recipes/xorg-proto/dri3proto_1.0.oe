@@ -1,0 +1,9 @@
+require xorg-proto-common.inc
+
+SUMMARY = "DRI3: Direct Rendering Infrastructure 3 headers"
+
+DESCRIPTION = "This package provides the wire protocol for the Direct \
+Rendering Ifnrastructure 3.  DIR is required for may hardware \
+accelerated OpenGL drivers."
+
+LICENSE = "MIT"

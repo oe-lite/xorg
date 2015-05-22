@@ -13,7 +13,7 @@ LICENSE = "MIT"
 PROTO_DEPS = "xf86driproto glproto"
 LIB_DEPS = "libx11 libxext"
 
-DEPENDS = "native:makedepend native:python-runtime native:libxml2 ${PROTO_DEPS} ${LIB_DEPS}  libxxf86vm libxdamage libxfixes"
+DEPENDS += "native:makedepend native:python-runtime native:libxml2 ${PROTO_DEPS} ${LIB_DEPS}  libxxf86vm libxdamage libxfixes"
 DEPENDS_${PN}-dev += "xf86driproto glproto"
 
 inherit autotools-autoreconf pkgconfig auto-package-libs c make c++

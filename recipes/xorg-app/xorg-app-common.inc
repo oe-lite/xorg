@@ -14,4 +14,6 @@ inherit autotools pkgconfig c++
 
 FILES_${PN} += "  /usr/lib/X11/${PN} /usr/share/X11/app-defaults/"
 
+CFLAGS += "-D_GNU_SOURCE"
+
 DEPENDS_${PN}[qa] = "allow-missing-lib-depends"

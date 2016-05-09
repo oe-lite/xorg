@@ -4,6 +4,8 @@
 DESCRIPTION = "X.Org X server -- Freescale iMx framebuffer driver"
 LICENSE = "MIT-X"
 
+COMPATIBLE_IF_FLAGS = "imx-blobs"
+
 DEPENDS = "xserver-xorg libx11 xproto renderproto videoproto randrproto util-macros fontsproto xextproto inputproto pixman libpciaccess libz160 amd-gpu-x11-bin-mx51"
 RDEPENDS_${PN} = "amd-gpu-x11-bin-mx51 libz160"
 
@@ -16,8 +18,9 @@ SRC_URI = "file://xserver-xorg-video-imx-${PV}.tar.gz \
            file://Fix-error-unknown-type-name-uint.patch \
            file://xserver-1.14-compat.patch \
 	   "
-RECIPE_FLAGS = "xorg_video_imx_xvideo_enable"
+RECIPE_FLAGS = "xorg_video_imx_xvideo_enable imx_blobs"
 DEFAULT_USE_xorg_video_imx_xvideo_enable = "0"
+DEFAULT_USE_imx_blobs = "0"
 DEPENDS:>USE_xorg_video_imx_xvideo_enable += " imx-lib-dev"
 RDEPENDS_${PN}:>USE_xorg_video_imx_xvideo_enable += " imx-lib"
 SRC_URI:>USE_xorg_video_imx_xvideo_enable += "file://enable_xvideo.patch"

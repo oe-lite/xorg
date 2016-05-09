@@ -7,7 +7,7 @@ HOMEPAGE = "http://dri.freedesktop.org"
 
 inherit autotools-autoreconf pkgconfig library
 
-SRC_URI = "http://dri.freedesktop.org/libdrm/libdrm-${PV}.tar.bz2"
+SRC_URI = "https://dri.freedesktop.org/libdrm/libdrm-${PV}.tar.bz2"
 
 #libpciaccess is required starting from libdrm 2.4.26
 DEPENDS = "libpciaccess libpthread-stubs libx11"

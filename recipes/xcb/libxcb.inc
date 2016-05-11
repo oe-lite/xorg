@@ -14,7 +14,7 @@ inherit autotools-autoreconf pkgconfig library
 LICENSE = "MIT-X"
 
 PARALLEL_MAKE = ""
-DEPENDS = "xproto libxau xcb-proto python-xcbgen"
+DEPENDS = "xproto libxau xcb-proto python-xcbgen native:util/xsltproc"
 
 SRC_URI = "http://xcb.freedesktop.org/dist/libxcb-${PV}.tar.bz2"
 

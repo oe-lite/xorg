@@ -1,6 +1,8 @@
 require xorg-driver-video.inc
 DESCRIPTION = "X.Org X server -- fbdev display driver"
 
+DEPENDS += "renderproto resourceproto scrnsaverproto"
+
 RDEPENDS_${PN} += """
 xserver-xorg-extension-fbdevhw
 xserver-xorg-extension-fb

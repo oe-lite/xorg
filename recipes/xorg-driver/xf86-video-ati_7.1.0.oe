@@ -2,7 +2,10 @@ DESCRIPTION = "X.Org X server -- Radeon ATI display driver"
 
 require xorg-driver-video.inc
 
-DEPENDS += "libdrm-radeon kbproto xf86driproto"
+COMPATIBLE_IF_FLAGS = "build-xf86-video-ati"
+
+DEPENDS += "libdrm-radeon kbproto xf86driproto renderproto resourceproto \
+            scrnsaverproto"
 LIBS_DEPS = """
 	xserver-xorg-extension-dri
 	xserver-xorg-extension-dri2

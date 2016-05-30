@@ -1,4 +1,4 @@
 require xorg-app-common.inc
 
-DEPENDS += "libxau libxt libxaw libxext libxmu libsm"
-RDEPENDS_${PN} += "libxau libxt libxaw libxext libxmu libsm"
+DEPENDS += "libutil libxau libxt libxaw libxext libxmu libsm"
+RDEPENDS_${PN} += "libutil libxau libxt libxaw libxext libxmu libsm"

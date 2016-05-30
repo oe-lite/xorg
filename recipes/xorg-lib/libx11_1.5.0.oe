@@ -25,7 +25,7 @@ PACKAGES =+ "${PN}-makekeys"
 DO_INSTALL_NATIVE = ""
 DO_INSTALL_NATIVE:native = "do_install_native"
 
-do_install[postfuncs] = "${DO_INSTALL_NATIVE}"
+do_install[postfuncs] += "${DO_INSTALL_NATIVE}"
 
 do_install_native(){
   mkdir -p ${D}${bindir}

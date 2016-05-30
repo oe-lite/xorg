@@ -1,0 +1,14 @@
+include mesa-common.inc
+include mesa-${PV}.inc
+include mesa-dri.inc
+
+do_compile() {
+    export PYTHON_MAJOR=$(python2 -c 'import sys; print(sys.version_info.major)')
+    export PYTHON_MINOR=$(python2 -c 'import sys; print(sys.version_info.minor)')
+    LIBDYNLOAD=${BUILD_SYSROOT}/lib/python$PYTHON_MAJOR.$PYTHON_MINOR/lib-dynload
+    #TODO: fix libxml2 python packaging
+    PYDIR=${libdir}/python$PYTHON_MAJOR.$PYTHON_MINOR
+    export PYTHONPATH=${BUILD_SYSROOT}/$PYDIR:$LIBDYNLOAD:${BUILD_SYSROOT}/$PYDIR/site-packages
+    export PYTHONHOME=${TARGET_SYSROOT}${prefix}
+    do_compile_make
+}

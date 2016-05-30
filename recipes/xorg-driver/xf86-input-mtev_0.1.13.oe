@@ -9,7 +9,11 @@ SRC_URI = "file://xorg-x11-drv-mtev-0.1.13.tar.gz \
 	   "
 #SRC_URI += "file://ABI_12.patch"
 
-DEPENDS += "inputproto kbproto pixman xextproto libpciaccess xserver-xorg-dev xproto randrproto util-macros mtdev-dev libm mtdev"
+COMPATIBLE_IF_FLAGS = "build-xf86-input-mtev"
+
+DEPENDS += "inputproto kbproto pixman xextproto libpciaccess xserver-xorg-dev xproto \
+            randrproto util-macros mtdev-dev libm mtdev xineramaproto resourceproto \
+            scrnsaverproto videoproto"
 
 RDEPENDS_${PN} = "mtdev"
 

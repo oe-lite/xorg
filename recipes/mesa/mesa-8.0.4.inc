@@ -1,12 +1,9 @@
 DEPENDS += "native:mesa-dri-glsl"
 
 
-SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/${PV}/MesaLib-${PV}.tar.bz2 \
-           file://uclibc.patch \
+SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/older-versions/8.x/${PV}/MesaLib-${PV}.tar.bz2 \
            file://crossfix.patch \
-           file://crossfix-mklib.patch \
-           file://mesa_fix_for_x32.patch \
-           "
+           file://crossfix-mklib.patch"
 S = "${SRCDIR}/Mesa-${PV}"
 
 do_autoreconf[prefuncs] += "do_autoreconf_fixup"

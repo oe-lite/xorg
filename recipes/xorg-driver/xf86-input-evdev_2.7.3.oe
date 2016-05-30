@@ -14,7 +14,7 @@ xorg.conf for each input device that will use this driver. "
 
 SRC_URI += "file://compile_without_udev.patch"
 
-DEPENDS += "mtdev-dev mtdev"
+DEPENDS += "mtdev-dev mtdev renderproto"
 RDEPENDS_${PN} += "mtdev"
 
 AUTORECONF_CMD = " \

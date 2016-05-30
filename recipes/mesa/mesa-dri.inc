@@ -1,5 +1,5 @@
 PROTO_DEPS += "dri2proto xproto xf86vidmodeproto"
-LIB_DEPS += "libdrm libexpat libpthread libdl librt"
+LIB_DEPS += "libxcb-glx libdrm libexpat libpthread libdl librt"
 COMMON_RDEPENDS = "libpthread libdl libstdc++ libm libgcc libc"
 
 # most of our targets do not have DRI so will use mesa-xlib

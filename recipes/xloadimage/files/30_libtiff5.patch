@@ -1,0 +1,33 @@
+Author: Dominik George <nik@naturalnet.de>
+Description: Builds with both libtiff4-dev and libtiff5-dev
+Forwarded: no
+--- a/tiff.c
++++ b/tiff.c
+@@ -11,6 +11,10 @@
+ 
+ #include <tiffio.h>
+ 
++#ifndef TIFF_VERSION_CLASSIC /* libtiff4 or libtiff5? */
++#define TIFFHeaderCommon TIFFHeader
++#endif
++
+ /* this structure contains all the information we care about WRT a TIFF
+  * image.
+  */
+@@ -34,14 +38,14 @@ static TIFF *is_tiff(fullname, name, inf
+      struct tiff_info *info;
+ {
+   ZFILE *zf;
+-  TIFFHeader th;
++  TIFFHeaderCommon th;
+   TIFF *tiff;
+ 
+   zf = zopen(fullname);
+ 
+   /* read TIFF header and see if it looks right
+    */
+-  if ((zread(zf, (byte *)&th, sizeof(TIFFHeader)) == sizeof(TIFFHeader)) &&
++  if ((zread(zf, (byte *)&th, sizeof(TIFFHeaderCommon)) == sizeof(TIFFHeaderCommon)) &&
+       ((th.tiff_magic == TIFF_BIGENDIAN) ||
+        (th.tiff_magic == TIFF_LITTLEENDIAN))) {
+ 

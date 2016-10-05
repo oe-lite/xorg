@@ -10,7 +10,9 @@ inherit autotools-autoreconf pkgconfig library
 SRC_URI = "https://dri.freedesktop.org/libdrm/libdrm-${PV}.tar.bz2"
 
 #libpciaccess is required starting from libdrm 2.4.26
-DEPENDS = "libpciaccess libpthread-stubs libx11"
+DEPENDS = "libpciaccess libpthread-stubs libx11 util-macros libm"
+
+EXTRA_OECONF += " --enable-etnaviv-experimental-api"
 
 COMMON_DEPENDS += "librt libc libgcc"
 DEPENDS += "${COMMON_DEPENDS}"

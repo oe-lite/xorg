@@ -4,7 +4,7 @@ LICENSE = "MIT/X11"
 
 require xorg-app-common.inc
 
-SRC_URI = "http://github.com/downloads/tias/xinput_calibrator/xinput_calibrator-${PV}.tar.gz"
+SRC_URI = "http://repository.timesys.com/buildsources/x/xinput_calibrator/xinput_calibrator-${PV}/xinput_calibrator-${PV}.tar.gz"
 SRC_URI += "file://calib_once.patch"
 
 S = "${SRCDIR}/xinput_calibrator-${PV}"
